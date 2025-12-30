@@ -131,6 +131,7 @@ interface GuitarStringProps {
   viewBoxHeight: number;
   stringY: number;
   svgRectRef: React.MutableRefObject<DOMRect | null>;
+  isMotionEnabled: boolean;
 }
 
 const GuitarString = memo(function GuitarString({
@@ -148,6 +149,7 @@ const GuitarString = memo(function GuitarString({
   viewBoxHeight,
   stringY,
   svgRectRef,
+  isMotionEnabled,
 }: GuitarStringProps) {
   const [isStrumming, setIsStrumming] = useState(false);
   const lastY = useRef<number | null>(null);
@@ -194,8 +196,10 @@ const GuitarString = memo(function GuitarString({
 
     setIsStrumming(true);
     onStrummingChange(stringData.id, true);
+
     // CUSTOMIZE: Strum amplitude (how far string moves) - default 50
-    displacement.set(direction * 50);
+    const amplitude = isMotionEnabled ? 50 : 0;
+    displacement.set(direction * amplitude);
     onStrum(stringData.id);
 
     setTimeout(() => {
@@ -209,7 +213,7 @@ const GuitarString = memo(function GuitarString({
       onStrummingChange(stringData.id, false);
       strumCooldown.current = false;
     }, 1600);
-  }, [displacement, onStrum, onStrummingChange, stringData.id]);
+  }, [displacement, onStrum, onStrummingChange, stringData.id, isMotionEnabled]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<SVGGElement>) => {
     // OPTIMIZATION: Use cached rect to avoid layout thrashing (reflow)
@@ -244,6 +248,8 @@ const GuitarString = memo(function GuitarString({
         (lastY.current > y + DETECTION_RANGE / 2 && svgY < y - DETECTION_RANGE / 2);
 
       if ((crossedDown || crossedUp || movedThroughRange) && Math.abs(deltaY) > 2) {
+        // Only trigger physical vibration if motion is enabled
+        // BUT we still want to trigger the "strum" event for lighting/sound
         triggerStrum(deltaY > 0 ? 1 : -1);
       }
     }
@@ -338,6 +344,8 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
   const [activeString, setActiveString] = useState<string | null>(null);
   const [hoveredString, setHoveredString] = useState<string | null>(null);
   const [strummingStrings, setStrummingStrings] = useState<Set<string>>(new Set());
+  // Default motion to FALSE as requested
+  const [isMotionEnabled, setIsMotionEnabled] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
   const svgRectRef = useRef<DOMRect | null>(null);
 
@@ -435,6 +443,25 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
 
   return (
     <div className="relative w-full h-screen flex items-center overflow-hidden">
+
+      {/* ================================================================
+          MOTION TOGGLE SWITCH
+          ================================================================ */}
+      <div className="absolute top-24 right-8 z-50 flex items-center gap-3">
+        <span className="text-white/50 text-sm font-[family-name:var(--font-figtree)]">String Motion</span>
+        <button
+          onClick={() => setIsMotionEnabled(!isMotionEnabled)}
+          className={`w-12 h-6 rounded-full p-1 transition-colors duration-300 ${isMotionEnabled ? 'bg-white/20' : 'bg-white/5'}`}
+        >
+          <motion.div
+            className="w-4 h-4 rounded-full bg-white"
+            initial={false}
+            animate={{ x: isMotionEnabled ? 24 : 0 }}
+            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+          />
+        </button>
+      </div>
+
       <div className="relative w-full h-full">
         <svg
           ref={svgRef}
@@ -605,6 +632,7 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
               viewBoxHeight={viewBoxHeight}
               stringY={firstStringY + index * stringSpacing}
               svgRectRef={svgRectRef}
+              isMotionEnabled={isMotionEnabled}
             />
           ))}
 
