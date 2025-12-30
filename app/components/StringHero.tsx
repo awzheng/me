@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef, useState, useCallback, useEffect, memo } from "react";
 import { motion, useSpring, useMotionValue, useTransform } from "framer-motion";
 
 // ============================================================================
@@ -75,13 +75,13 @@ const MONOCHROME_SETTINGS = {
   // 0.5 = 50% blend (mix of original and tinted)
   // 1 = no effect (original image colors)
   colorBleed: 0.1,
-  
+
   // Brightness boost for the tinted image
   // 1 = normal brightness
   // 1.2 = 20% brighter (good for dark images)
   // 0.8 = 20% darker
   brightness: 1.1,
-  
+
   // Contrast adjustment
   // 1 = normal contrast
   // 1.2 = higher contrast (more dramatic)
@@ -98,11 +98,11 @@ const FADE_SETTINGS = {
   // CUSTOMIZE: How quickly content fades IN when hovering (in seconds)
   // Lower = faster fade in, Higher = slower fade in
   fadeInDuration: 0.15,
-  
+
   // CUSTOMIZE: How quickly content fades OUT when leaving (in seconds)
   // Lower = faster fade out, Higher = slower/lingering fade out
   fadeOutDuration: 0.3,
-  
+
   // CUSTOMIZE: Easing function for animations
   // Options: "easeIn", "easeOut", "easeInOut", "linear"
   fadeInEase: "easeOut" as const,
@@ -130,9 +130,10 @@ interface GuitarStringProps {
   viewBoxWidth: number;
   viewBoxHeight: number;
   stringY: number;
+  svgRectRef: React.MutableRefObject<DOMRect | null>;
 }
 
-function GuitarString({
+const GuitarString = memo(function GuitarString({
   stringData,
   index,
   onStrum,
@@ -146,13 +147,14 @@ function GuitarString({
   viewBoxWidth,
   viewBoxHeight,
   stringY,
+  svgRectRef,
 }: GuitarStringProps) {
   const [isStrumming, setIsStrumming] = useState(false);
   const lastY = useRef<number | null>(null);
   const lastTime = useRef<number>(0);
   const strumCooldown = useRef(false);
   const wasInRange = useRef(false);
-  
+
   // ============================================================================
   // STRING PHYSICS - Customize the "bounciness" of strings
   // ============================================================================
@@ -163,16 +165,16 @@ function GuitarString({
   });
 
   const y = stringY;
-  
+
   const pathD = useMotionValue(`M 0 ${y} Q ${soundholeCenter.x} ${y} ${viewBoxWidth} ${y}`);
-  
+
   // Update path when stringY changes (e.g., when stringSpacing is modified)
   useEffect(() => {
     const currentDisplacement = displacement.get();
     const path = `M 0 ${y} Q ${soundholeCenter.x} ${y + currentDisplacement} ${viewBoxWidth} ${y}`;
     pathD.set(path);
   }, [y, soundholeCenter.x, viewBoxWidth, pathD, displacement]);
-  
+
   // Update path when displacement changes (string vibration)
   useEffect(() => {
     const unsubscribe = displacement.on("change", (v) => {
@@ -182,24 +184,24 @@ function GuitarString({
       const path = `M ${startX} ${y} Q ${midX} ${y + v} ${endX} ${y}`;
       pathD.set(path);
     });
-    
+
     return unsubscribe;
   }, [displacement, y, soundholeCenter.x, viewBoxWidth, pathD]);
 
   const triggerStrum = useCallback((direction: number) => {
     if (strumCooldown.current) return;
     strumCooldown.current = true;
-    
+
     setIsStrumming(true);
     onStrummingChange(stringData.id, true);
     // CUSTOMIZE: Strum amplitude (how far string moves) - default 50
     displacement.set(direction * 50);
     onStrum(stringData.id);
-    
+
     setTimeout(() => {
       displacement.set(0);
     }, 30);
-    
+
     // CUSTOMIZE: How long string stays "lit" after strumming (in ms)
     // Default: 1600ms = 1.6 seconds
     setTimeout(() => {
@@ -210,16 +212,16 @@ function GuitarString({
   }, [displacement, onStrum, onStrummingChange, stringData.id]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<SVGGElement>) => {
-    const svg = e.currentTarget.ownerSVGElement;
-    if (!svg) return;
-    
+    // OPTIMIZATION: Use cached rect to avoid layout thrashing (reflow)
+    const rect = svgRectRef.current;
+    if (!rect) return;
+
     const now = performance.now();
-    const rect = svg.getBoundingClientRect();
     const svgY = (e.clientY - rect.top) / rect.height * viewBoxHeight;
-    
+
     const distanceToString = Math.abs(svgY - y);
     const isNearString = distanceToString < DETECTION_RANGE;
-    
+
     if (isNearString && !wasInRange.current) {
       strumCooldown.current = false;
       wasInRange.current = true;
@@ -228,28 +230,28 @@ function GuitarString({
       wasInRange.current = false;
       onLeaveDetectionZone();
     }
-    
+
     if (isNearString) {
       onHover(stringData.id);
     }
-    
+
     if (lastY.current !== null) {
       const deltaY = svgY - lastY.current;
-      
+
       const crossedDown = lastY.current < y && svgY >= y;
       const crossedUp = lastY.current > y && svgY <= y;
-      const movedThroughRange = (lastY.current < y - DETECTION_RANGE/2 && svgY > y + DETECTION_RANGE/2) ||
-                                 (lastY.current > y + DETECTION_RANGE/2 && svgY < y - DETECTION_RANGE/2);
-      
+      const movedThroughRange = (lastY.current < y - DETECTION_RANGE / 2 && svgY > y + DETECTION_RANGE / 2) ||
+        (lastY.current > y + DETECTION_RANGE / 2 && svgY < y - DETECTION_RANGE / 2);
+
       if ((crossedDown || crossedUp || movedThroughRange) && Math.abs(deltaY) > 2) {
         triggerStrum(deltaY > 0 ? 1 : -1);
       }
     }
-    
+
     lastY.current = svgY;
     lastTime.current = now;
   }, [y, triggerStrum, onHover, onLeaveDetectionZone, stringData.id, viewBoxHeight]);
-  
+
   const handleMouseLeave = useCallback(() => {
     lastY.current = null;
     wasInRange.current = false;
@@ -258,15 +260,14 @@ function GuitarString({
   }, [onHover]);
 
   const handleMouseEnter = useCallback((e: React.MouseEvent<SVGGElement>) => {
-    const svg = e.currentTarget.ownerSVGElement;
-    if (!svg) return;
-    
-    const rect = svg.getBoundingClientRect();
+    const rect = svgRectRef.current;
+    if (!rect) return;
+
     const svgY = (e.clientY - rect.top) / rect.height * viewBoxHeight;
     lastY.current = svgY;
     lastTime.current = performance.now();
     strumCooldown.current = false;
-    
+
     const distanceToString = Math.abs(svgY - y);
     if (distanceToString < DETECTION_RANGE) {
       wasInRange.current = true;
@@ -289,11 +290,11 @@ function GuitarString({
   const currentColor = isLit ? stringData.color : stringData.idleColor;
   // CUSTOMIZE: String thickness (3 = idle, 4 = strumming)
   const strokeWidth = isStrumming ? 4 : 3;
-  
+
   // Use different durations for lighting up vs dimming
   // See FADE_SETTINGS above to customize these values
-  const transitionDuration = isLit 
-    ? FADE_SETTINGS.fadeInDuration 
+  const transitionDuration = isLit
+    ? FADE_SETTINGS.fadeInDuration
     : FADE_SETTINGS.fadeOutDuration;
 
   return (
@@ -327,7 +328,7 @@ function GuitarString({
       />
     </g>
   );
-}
+});
 
 interface StringHeroProps {
   onStringHover?: (id: string | null) => void;
@@ -337,32 +338,52 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
   const [activeString, setActiveString] = useState<string | null>(null);
   const [hoveredString, setHoveredString] = useState<string | null>(null);
   const [strummingStrings, setStrummingStrings] = useState<Set<string>>(new Set());
-  
+  const svgRef = useRef<SVGSVGElement>(null);
+  const svgRectRef = useRef<DOMRect | null>(null);
+
+  // OPTIMIZATION: Update cached rect on resize/scroll to avoid querying in render loop
+  useEffect(() => {
+    const updateRect = () => {
+      if (svgRef.current) {
+        svgRectRef.current = svgRef.current.getBoundingClientRect();
+      }
+    };
+
+    updateRect();
+    window.addEventListener("resize", updateRect);
+    window.addEventListener("scroll", updateRect, { passive: true });
+
+    return () => {
+      window.removeEventListener("resize", updateRect);
+      window.removeEventListener("scroll", updateRect);
+    };
+  }, []);
+
   // ============================================================================
   // LAYOUT SETTINGS - Customize the overall string hero layout
   // ============================================================================
   const viewBoxWidth = 1200;   // CUSTOMIZE: SVG canvas width
   const viewBoxHeight = 600;   // CUSTOMIZE: SVG canvas height
-  
+
   // CUSTOMIZE: Soundhole position (x = left/right, y = up/down)
   // viewBoxWidth / 3 = positioned at 1/3 from left
   const soundholeCenter = { x: viewBoxWidth / 3, y: viewBoxHeight / 2 };
-  
+
   // CUSTOMIZE: Soundhole size (in SVG units)
   const soundholeRadius = 225;
-  
+
   // CUSTOMIZE: Spacing between strings (in SVG units)
   const stringSpacing = 40;
-  
+
   // Calculate first string position (centered vertically)
   const firstStringY = viewBoxHeight / 2 - (strings.length - 1) * stringSpacing / 2;
 
   // Determine which string is currently lit (for soundhole content and shadow)
   // Priority: hovered > strumming > active
-  const currentlyLitString = hoveredString 
+  const currentlyLitString = hoveredString
     || (strummingStrings.size > 0 ? Array.from(strummingStrings)[strummingStrings.size - 1] : null)
     || activeString;
-  
+
   const isAnyStringLit = currentlyLitString !== null;
   const shadowColor = isAnyStringLit && currentlyLitString
     ? strings.find(s => s.id === currentlyLitString)?.color || "transparent"
@@ -371,7 +392,7 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
   const handleStrum = useCallback((id: string) => {
     setActiveString(id);
     onStringHover?.(id);
-    
+
     setTimeout(() => {
       setActiveString(null);
     }, 1600);
@@ -416,6 +437,7 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
     <div className="relative w-full h-screen flex items-center overflow-hidden">
       <div className="relative w-full h-full">
         <svg
+          ref={svgRef}
           viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
           className="w-full h-full"
           preserveAspectRatio="xMidYMid slice"
@@ -426,7 +448,7 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
               {/* CUSTOMIZE: Clip radius (soundholeRadius - 4 = content area) */}
               <circle cx={soundholeCenter.x} cy={soundholeCenter.y} r={soundholeRadius - 4} />
             </clipPath>
-            
+
             {/* Soundhole gradient (dark center) */}
             <radialGradient id="soundhole-gradient" cx="50%" cy="50%" r="50%">
               {/* CUSTOMIZE: Soundhole colors (darkest at center) */}
@@ -434,20 +456,20 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
               <stop offset="60%" stopColor="#121212" />
               <stop offset="100%" stopColor="#1a1a1a" />
             </radialGradient>
-            
+
             {/* Dynamic shadow filter */}
             <filter id="soundhole-shadow" x="-50%" y="-50%" width="200%" height="200%">
-              <feDropShadow 
-                dx="0" 
-                dy="0" 
+              <feDropShadow
+                dx="0"
+                dy="0"
                 // CUSTOMIZE: Shadow blur radius (25 when lit)
-                stdDeviation={isAnyStringLit ? "25" : "0"} 
+                stdDeviation={isAnyStringLit ? "25" : "0"}
                 floodColor={shadowColor}
                 // CUSTOMIZE: Shadow opacity (0.5 = 50%)
                 floodOpacity={isAnyStringLit ? "0.5" : "0"}
               />
             </filter>
-            
+
             {/* ================================================================
                 MONOCHROME FILTERS FOR IMAGES
                 
@@ -465,7 +487,7 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
               // Calculate the blend between monochrome tint and original color
               // colorBleed: 0 = full monochrome, 1 = full original colors
               const mono = 1 - colorBleed;
-              
+
               return (
                 <filter key={`mono-${stringData.id}`} id={`monochrome-${stringData.id}`}>
                   {/* 
@@ -480,7 +502,7 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
                     - Then multiply by the target RGB color
                     - Finally, blend with original based on colorBleed
                   */}
-                  
+
                   {/* Single matrix that does: grayscale → tint → blend with original */}
                   {/* This combines all operations for better performance */}
                   <feColorMatrix
@@ -493,7 +515,7 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
                     `}
                     result="tinted"
                   />
-                  
+
                   {/* Apply contrast adjustment if needed */}
                   {contrast !== 1 && (
                     <feComponentTransfer>
@@ -506,7 +528,7 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
               );
             })}
           </defs>
-          
+
           {/* ================================================================
               SOUNDHOLE BACKGROUND
               ================================================================ */}
@@ -523,7 +545,7 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
               transition: `filter ${isAnyStringLit ? FADE_SETTINGS.fadeInDuration : FADE_SETTINGS.fadeOutDuration}s ease`,
             }}
           />
-          
+
           {/* ================================================================
               SOUNDHOLE RINGS - Customize the decorative rings
               ================================================================ */}
@@ -538,7 +560,7 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
             // CUSTOMIZE: Ring thickness
             strokeWidth="2"
           />
-          
+
           {/* Inner ring 1 */}
           <circle
             cx={soundholeCenter.x}
@@ -551,7 +573,7 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
             // CUSTOMIZE: Ring opacity
             opacity="0.5"
           />
-          
+
           {/* Inner ring 2 */}
           <circle
             cx={soundholeCenter.x}
@@ -562,7 +584,7 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
             strokeWidth="0.5"
             opacity="0.3"
           />
-          
+
           {/* ================================================================
               STRINGS (rendered before content so content appears on top)
               ================================================================ */}
@@ -582,9 +604,10 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
               viewBoxWidth={viewBoxWidth}
               viewBoxHeight={viewBoxHeight}
               stringY={firstStringY + index * stringSpacing}
+              svgRectRef={svgRectRef}
             />
           ))}
-          
+
           {/* ================================================================
               SOUNDHOLE CONTENT (Emoji or Image)
               - Rendered ABOVE strings so images appear on top
@@ -598,18 +621,18 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
               const isThisStringLit = currentlyLitString === stringData.id;
               const content = placeholderContent[stringData.id];
               if (!content) return null;
-              
+
               // Use different durations for fade in vs fade out
               // See FADE_SETTINGS above to customize these values
               const fadeTransition = {
-                duration: isThisStringLit 
-                  ? FADE_SETTINGS.fadeInDuration 
+                duration: isThisStringLit
+                  ? FADE_SETTINGS.fadeInDuration
                   : FADE_SETTINGS.fadeOutDuration,
-                ease: isThisStringLit 
-                  ? FADE_SETTINGS.fadeInEase 
+                ease: isThisStringLit
+                  ? FADE_SETTINGS.fadeInEase
                   : FADE_SETTINGS.fadeOutEase,
               };
-              
+
               return content.type === "image" ? (
                 <motion.image
                   key={`content-${stringData.id}`}
@@ -645,24 +668,24 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
               );
             })}
           </g>
-          
+
           {/* ================================================================
               STRING LABELS (Right side)
               ================================================================ */}
           {strings.map((stringData, index) => {
-            const isLit = strummingStrings.has(stringData.id) || 
-                          activeString === stringData.id || 
-                          hoveredString === stringData.id;
+            const isLit = strummingStrings.has(stringData.id) ||
+              activeString === stringData.id ||
+              hoveredString === stringData.id;
             const stringY = firstStringY + index * stringSpacing;
             // Position text above the string (half line up)
             const textY = stringY - stringSpacing / 2;
-            
+
             // Use different durations for lighting up vs dimming
             // See FADE_SETTINGS above to customize these values
-            const transitionDuration = isLit 
-              ? FADE_SETTINGS.fadeInDuration 
+            const transitionDuration = isLit
+              ? FADE_SETTINGS.fadeInDuration
               : FADE_SETTINGS.fadeOutDuration;
-            
+
             return (
               <text
                 key={`label-${stringData.id}`}
@@ -693,11 +716,11 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
           })}
         </svg>
       </div>
-      
+
       {/* ================================================================
           SCROLL INDICATOR (Bottom center)
           ================================================================ */}
-      <motion.div 
+      <motion.div
         // CUSTOMIZE: Position from bottom (bottom-8 = 2rem = 32px)
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         initial={{ opacity: 0, y: -10 }}
@@ -707,7 +730,7 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
         transition={{ delay: 1, duration: 0.5 }}
       >
         {/* CUSTOMIZE: Scroll indicator text */}
-        <span 
+        <span
           // CUSTOMIZE: Text size (text-sm = 0.875rem = 14px)
           // CUSTOMIZE: Text color (text-gray-500 = #6b7280)
           className="text-2xl font-[family-name:var(--font-figtree)] text-gray-500"
@@ -722,7 +745,7 @@ export default function StringHero({ onStringHover }: StringHeroProps) {
         >
           {/* CUSTOMIZE: Arrow icon size (24 = 24px) */}
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-gray-500">
-            <path d="M12 5v14M5 12l7 7 7-7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12 5v14M5 12l7 7 7-7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </motion.div>
       </motion.div>
