@@ -1,4 +1,3 @@
-import Navigation from "./components/Navigation";
 import ThemeToggle from "./components/ThemeToggle";
 import SocialLinks from "./components/SocialLinks";
 
@@ -8,10 +7,7 @@ export default function Home() {
       {/* Header */}
       <header className="header">
         <h1 style={{ fontSize: '1.25rem', fontWeight: 500, margin: 0 }}>awzheng.me</h1>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <Navigation />
-          <ThemeToggle />
-        </div>
+        <ThemeToggle />
       </header>
 
       {/* Main Content */}
