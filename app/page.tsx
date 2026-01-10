@@ -7,7 +7,7 @@ export default function Home() {
     <main>
       {/* Header */}
       <header className="header">
-        <h1 style={{ fontSize: '1.25rem', fontWeight: 500, margin: 0 }}>andrew zheng</h1>
+        <h1 style={{ fontSize: '1.25rem', fontWeight: 500, margin: 0 }}>awzheng.me</h1>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <Navigation />
           <ThemeToggle />
@@ -19,14 +19,14 @@ export default function Home() {
         {/* About Section */}
         <section id="about" className="section">
           <p style={{ fontSize: '1rem', marginBottom: '2rem' }}>
-            Engineering @ <strong>Your Company</strong>
+            Andrew Zheng
           </p>
 
           {/* Currently */}
           <h3>Currently</h3>
           <ul className="experience-list">
             <li>
-              <strong>Software Engineer</strong> @ <a href="#" style={{ color: 'var(--accent)' }}>Your Company</a>
+              <strong>Computer Engineering</strong> @ <a href="https://uwaterloo.ca/electrical-computer-engineering/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>University of Waterloo</a>
             </li>
           </ul>
 
@@ -34,29 +34,38 @@ export default function Home() {
           <h3 style={{ marginTop: '2rem' }}>Previously</h3>
           <ul className="experience-list">
             <li>
-              <strong>Engineering Intern</strong> @ <a href="#" style={{ color: 'var(--accent)' }}>Previous Company</a>
-            </li>
-            <li>
-              <strong>Research Assistant</strong> @ <a href="#" style={{ color: 'var(--accent)' }}>University</a>
+              <strong>Case Contest Coach</strong> Self-founded & 5-figures revenue
             </li>
           </ul>
         </section>
 
-        {/* What I've Been Building */}
-        <section id="projects" className="section">
-          <h3>what i've been building:</h3>
+        {/* Built */}
+        <section id="built" className="section">
+          <h3>Built</h3>
           <ul className="project-list">
             <li>
-              created <a href="#" style={{ color: 'var(--accent)' }}><strong>project name</strong></a> (brief description of what it does and impact)
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="#4ECDC4" style={{ width: '1.8em', height: '1em', display: 'inline-block', verticalAlign: 'middle', marginRight: '0.25em' }}>
+                <polygon points="0,0 40,0 40,12 32,20 40,28 32,36 40,50 0,50" />
+                <polygon points="52,0 88,0 88,18 82,25 88,32 88,50 52,50 52,32 58,25 52,18" />
+                <polygon points="100,0 136,0 136,18 130,25 136,32 136,50 100,50 100,32 106,25 100,18" />
+                <polygon points="148,0 188,0 188,50 148,50 148,36 156,28 148,20 156,12 148,0" />
+              </svg>
+              <a href="https://github.com/awzheng/SageWall" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>SageWall</strong></a> ML Cloud Security System
             </li>
             <li>
-              shipped <a href="#" style={{ color: 'var(--accent)' }}><strong>another project</strong></a> (description and user metrics)
+              🌟 <a href="https://github.com/awzheng/CrawlStars" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>CrawlStars</strong></a> Concurrent Web Crawler + Search Engine
             </li>
             <li>
-              built <a href="#" style={{ color: 'var(--accent)' }}><strong>cool thing</strong></a> (technical achievement or innovation)
+              🦘 <a href="https://github.com/awzheng/Mangaroo" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Mangaroo</strong></a> PDF-to-Manga AI Illustrator
             </li>
             <li>
-              developed <a href="#" style={{ color: 'var(--accent)' }}><strong>useful tool</strong></a> (problem it solves)
+              🚎 <a href="https://github.com/waterloo-rocketry/canhw/tree/ra_respin_2025" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Remote Arming Board</strong></a> Waterloo Rocketry
+            </li>
+            <li>
+              🦾 <a href="https://github.com/awzheng/emg-fabric" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>EMG Fabric Bionic Arm PCB</strong></a> UW Biomechatronics
+            </li>
+            <li>
+              📚 View my <a href="https://docs.google.com/presentation/d/1IPV0oED7ZA_3K-oapaJplcr2cA3jqUmWFoVdGyBQ99s/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>portfolio</strong></a>
             </li>
           </ul>
         </section>
@@ -66,13 +75,13 @@ export default function Home() {
           <h3>Writing</h3>
           <ul className="writing-list">
             <li>
-              <a href="#">article or blog post title</a>
+              SageWall <a href="https://github.com/awzheng/SageWall/blob/main/devlog.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Devlog</strong></a>
             </li>
             <li>
-              <a href="#">another interesting piece</a>
+              CrawlStars <a href="https://github.com/awzheng/CrawlStars/blob/main/devlog.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Devlog</strong></a>
             </li>
             <li>
-              <a href="#">technical deep dive</a>
+              Mangaroo <a href="https://github.com/awzheng/Mangaroo/blob/main/devlog.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Devlog</strong></a>
             </li>
           </ul>
         </section>
