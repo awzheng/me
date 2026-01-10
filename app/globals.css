@@ -28,8 +28,8 @@ main {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  /* Align content to bottom */
+  align-items: center;
+  /* Align content to center */
   padding: 2rem 1rem;
 }
 
@@ -40,9 +40,9 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/a-place-above-heaven.png');
+  background-image: url('/images/blindsighted.png');
   background-size: cover;
-  background-position: bottom center;
+  background-position: center;
   /* Shore at bottom */
   background-repeat: no-repeat;
   z-index: 0;
@@ -50,19 +50,19 @@ main {
 
 /* Main content card with glass morphism */
 .content-card {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 16px;
   padding: 3rem 2.5rem;
   max-width: 700px;
   width: 100%;
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.25),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(0, 0, 0, 0);
   position: relative;
   z-index: 1;
   margin-bottom: 0;
-  backdrop-filter: blur(3px) saturate(100%);
+  backdrop-filter: blur(4px) saturate(100%);
 }
 
 a {

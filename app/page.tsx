@@ -51,7 +51,7 @@ export default function Home() {
               🌟 <a href="https://github.com/awzheng/CrawlStars" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>CrawlStars</strong></a> Concurrent Web Crawler + Search Engine
             </li>
             <li>
-              🦘 <a href="https://github.com/awzheng/Mangaroo" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Mangaroo</strong></a> PDF-to-Manga AI Illustrator
+              📖 <a href="https://github.com/awzheng/Mangaroo" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Mangaroo</strong></a> PDF-to-Manga AI Illustrator
             </li>
             <li>
               🚎 <a href="https://github.com/waterloo-rocketry/canhw/tree/ra_respin_2025" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Remote Arming Board</strong></a> Waterloo Rocketry
