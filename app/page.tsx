@@ -1,17 +1,16 @@
-import ThemeToggle from "./components/ThemeToggle";
 import SocialLinks from "./components/SocialLinks";
 
 export default function Home() {
   return (
     <main>
-      {/* Header */}
-      <header className="header">
-        <h1 style={{ fontSize: '1.25rem', fontWeight: 500, margin: 0 }}>awzheng.me</h1>
-        <ThemeToggle />
-      </header>
+      <div className="background-layer" aria-hidden="true"></div>
+      <div className="content-card">
+        {/* Header */}
+        <header className="header">
+          <h1 style={{ fontSize: '1.25rem', fontWeight: 500, margin: 0 }}>awzheng.me</h1>
+          <SocialLinks />
+        </header>
 
-      {/* Main Content */}
-      <div className="container">
         {/* About Section */}
         <section id="about" className="section">
           <p style={{ fontSize: '1rem', marginBottom: '2rem' }}>
@@ -30,7 +29,7 @@ export default function Home() {
           <h3 style={{ marginTop: '2rem' }}>Previously</h3>
           <ul className="experience-list">
             <li>
-              <strong>Case Contest Coach</strong> Self-founded & 5-figures revenue
+              <strong>Case Contest Coach</strong> Self-founded, 5-figures revenue
             </li>
           </ul>
         </section>
@@ -81,13 +80,12 @@ export default function Home() {
             </li>
           </ul>
         </section>
-      </div>
 
-      {/* Footer */}
-      <footer className="footer">
-        <SocialLinks />
-        <p style={{ marginTop: '1.5rem' }}>© {new Date().getFullYear()} Andrew Zheng</p>
-      </footer>
+        {/* Footer */}
+        <footer className="footer">
+          <p>© {new Date().getFullYear()} Andrew Zheng</p>
+        </footer>
+      </div>
     </main>
   );
 }

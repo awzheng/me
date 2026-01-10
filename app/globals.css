@@ -1,29 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-:root {
-  /* Solarized Light Theme */
-  --background: #fdf6e3;
-  --foreground: #1a1a1a;
-  --accent: #268bd2;
-  --muted: #4a4a4a;
-  --border: #eee8d5;
-  --card: #ffffff;
-  --highlight: #cb4b16;
-  --dot-color: rgba(0, 0, 0, 0.15);
-}
-
-[data-theme="dark"] {
-  /* Charcoal Dark Theme */
-  --background: #1a1a1a;
-  --foreground: #e0e0e0;
-  --accent: #60a5fa;
-  --muted: #9ca3af;
-  --border: #2a2a2a;
-  --card: #242424;
-  --highlight: #f59e0b;
-  --dot-color: rgba(255, 255, 255, 0.08);
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -34,18 +10,59 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  background-color: var(--background);
-  background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
-  background-size: 20px 20px;
-  color: var(--foreground);
-  transition: background-color 0.3s ease, color 0.3s ease, background-image 0.3s ease;
+  color: #ffffff;
   line-height: 1.6;
+}
+
+/* Main container that holds everything */
+main {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  /* Align content to bottom */
+  padding: 2rem 1rem;
+}
+
+/* Background image as separate layer for backdrop-filter to work */
+.background-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/a-place-above-heaven.png');
+  background-size: cover;
+  background-position: bottom center;
+  /* Shore at bottom */
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* Main content card with glass morphism */
+.content-card {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  max-width: 700px;
+  width: 100%;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
+  backdrop-filter: blur(3px) saturate(100%);
 }
 
 a {
@@ -63,21 +80,21 @@ h1 {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: var(--foreground);
+  color: #ffffff;
 }
 
 h2 {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--foreground);
+  color: #ffffff;
 }
 
 h3 {
   font-size: 1.125rem;
   font-weight: 500;
   margin-bottom: 0.75rem;
-  color: var(--foreground);
+  color: #ffffff;
 }
 
 p {
@@ -86,12 +103,6 @@ p {
 }
 
 /* Layout utilities */
-.container {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-}
-
 .section {
   margin-bottom: 3rem;
 }
@@ -100,12 +111,12 @@ p {
 .nav-link {
   font-size: 0.95rem;
   margin: 0 0.75rem;
-  color: var(--muted);
+  color: #ffffff;
   font-weight: 400;
 }
 
 .nav-link:hover {
-  color: var(--accent);
+  opacity: 0.7;
 }
 
 /* List styles */
@@ -125,7 +136,7 @@ ul {
   content: "◆";
   position: absolute;
   left: 0;
-  color: var(--accent);
+  color: #ffffff;
 }
 
 .project-list li::before,
@@ -133,92 +144,68 @@ ul {
   content: "↳";
   position: absolute;
   left: 0;
-  color: var(--muted);
+  color: #ffffff;
 }
 
 /* Social icons */
 .social-links {
   display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  justify-content: center;
+  gap: 0.75rem;
 }
 
 .social-links a {
-  color: var(--muted);
-  transition: color 0.2s ease, transform 0.2s ease;
+  color: #ffffff;
+  transition: opacity 0.2s ease;
 }
 
 .social-links a:hover {
-  color: var(--accent);
-  transform: translateY(-2px);
+  opacity: 0.7;
 }
 
-/* Theme toggle */
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  color: var(--muted);
-  transition: color 0.2s ease;
-  font-size: 1.25rem;
-}
-
-.theme-toggle:hover {
-  color: var(--accent);
-}
-
-/* Navigation */
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0 1rem;
-  max-width: 700px;
-  margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Footer */
 .footer {
   text-align: center;
-  padding: 3rem 1.5rem 2rem;
-  color: var(--muted);
+  padding-top: 2rem;
+  margin-top: 2rem;
+  color: #ffffff;
   font-size: 0.875rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Code/monospace elements */
 code {
   font-family: 'Monaco', 'Courier New', monospace;
   font-size: 0.9em;
-  color: var(--highlight);
+  color: #cb4b16;
 }
 
 /* Responsive */
 @media (max-width: 640px) {
+  body {
+    padding: 1rem 0.5rem;
+  }
+
+  .content-card {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+  }
+
   h1 {
     font-size: 1.75rem;
   }
 
   h2 {
     font-size: 1.25rem;
-  }
-
-  .container {
-    padding: 1.5rem 1rem;
-  }
-
-  .header {
-    padding-left: 1rem;
-    padding-right: 1rem;
   }
 
   .nav-link {
