@@ -1,6 +1,20 @@
 import SocialLinks from "./components/SocialLinks";
+import TypeWriter from "./components/TypeWriter";
 
 export default function Home() {
+  // Customizable word list for the typing animation
+  const typingWords = [
+    "UWaterloo",
+    "Comp Eng",
+    "System Design",
+    "Guitar",
+    "Bodybuilding",
+    "Lofi Records",
+    "Ninja Creami",
+    "Psychology",
+    "Markham",
+  ];
+
   return (
     <main>
       <div className="background-layer" aria-hidden="true"></div>
@@ -14,14 +28,20 @@ export default function Home() {
         {/* About Section */}
         <section id="about" className="section">
           <p style={{ fontSize: '1rem', marginBottom: '2rem' }}>
-            Andrew Zheng
+            Andrew ❤️ <TypeWriter
+              words={typingWords}
+              typingSpeed={80}
+              deleteSpeed={60}
+              delayAfterTyping={2000}
+              delayAfterDeleting={0}
+            />
           </p>
 
           {/* Currently */}
           <h3>Currently</h3>
           <ul className="experience-list">
             <li>
-              <strong>Computer Engineering</strong> @ <a href="https://uwaterloo.ca/electrical-computer-engineering/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>University of Waterloo</a>
+              Computer Engineering @ <a href="https://uwaterloo.ca/electrical-computer-engineering/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>University of Waterloo</strong></a>
             </li>
           </ul>
 
@@ -29,14 +49,14 @@ export default function Home() {
           <h3 style={{ marginTop: '2rem' }}>Previously</h3>
           <ul className="experience-list">
             <li>
-              <strong>Case Contest Coach</strong> Self-founded, 5-figures revenue
+              <strong>Case Contest Coach</strong> Self-developed curriculum, 5-figures revenue
             </li>
           </ul>
         </section>
 
-        {/* Built */}
-        <section id="built" className="section">
-          <h3>Built</h3>
+        {/* Projects */}
+        <section id="projects" className="section">
+          <h3>Projects</h3>
           <ul className="project-list">
             <li>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="#4ECDC4" style={{ width: '1.8em', height: '1em', display: 'inline-block', verticalAlign: 'middle', marginRight: '0.25em' }}>
@@ -81,9 +101,19 @@ export default function Home() {
           </ul>
         </section>
 
+        {/* More */}
+        <section id="more" className="section">
+          <h3>More</h3>
+          <ul className="more-list">
+            <li>
+              <a href="https://www.decadirect.org/articles/congratulations-to-the-2024-deca-icdc-competitive-event-champions" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>1st Place @ DECA ICDC 2024</strong></a> (BTDM) Los Angeles, CA
+            </li>
+          </ul>
+        </section>
+
         {/* Footer */}
         <footer className="footer">
-          <p>© {new Date().getFullYear()} Andrew Zheng</p>
+          <p>awzheng ❤️ you</p>
         </footer>
       </div>
     </main>

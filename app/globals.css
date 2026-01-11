@@ -40,7 +40,7 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/images/blindsighted.png');
+  background-image: url('/images/blindsighted.jpeg');
   background-size: cover;
   background-position: center;
   /* Shore at bottom */
@@ -126,7 +126,8 @@ ul {
 
 .experience-list li,
 .project-list li,
-.writing-list li {
+.writing-list li,
+.more-list li {
   margin-bottom: 0.75rem;
   padding-left: 1.25rem;
   position: relative;
@@ -140,7 +141,8 @@ ul {
 }
 
 .project-list li::before,
-.writing-list li::before {
+.writing-list li::before,
+.more-list li::before {
   content: "↳";
   position: absolute;
   left: 0;
@@ -211,5 +213,28 @@ code {
   .nav-link {
     margin: 0 0.5rem;
     font-size: 0.875rem;
+  }
+}
+
+/* TypeWriter Animation */
+.typewriter {
+  display: inline-block;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
   }
 }
