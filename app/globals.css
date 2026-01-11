@@ -47,6 +47,11 @@ main {
   /* Shore at bottom */
   background-repeat: no-repeat;
   z-index: 0;
+  /* Disable user interactions with background */
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
 }
 
 /* Main content card with glass morphism */
