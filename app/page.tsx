@@ -113,7 +113,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="footer">
-          <p>awzheng ❤️ you</p>
+          <p>© 2026 Andrew Zheng</p>
         </footer>
       </div>
     </main>
