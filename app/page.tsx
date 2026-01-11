@@ -53,7 +53,7 @@ export default function Home() {
             <li>
               <span
                 className="typewriter-hover"
-                data-hover-text=" + generated 5-figure revenue"
+                data-hover-text=" + 5-figures in revenue"
               >
                 <strong>Case Contest Coach</strong>, self-employed
               </span>
