@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   icons: {
     icon: '/icon.svg',
   },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    viewportFit: 'cover',
+  },
+  themeColor: '#0A404B',
 };
 
 export default function RootLayout({

@@ -1,5 +1,6 @@
 import SocialLinks from "./components/SocialLinks";
 import TypeWriter from "./components/TypeWriter";
+import TypewriterHover from "./components/TypewriterHover";
 
 export default function Home() {
   // Customizable word list for the typing animation
@@ -17,6 +18,7 @@ export default function Home() {
 
   return (
     <main>
+      <TypewriterHover />
       <div className="background-layer" aria-hidden="true"></div>
       <div className="content-card">
         {/* Header */}
@@ -65,22 +67,22 @@ export default function Home() {
                 <polygon points="100,0 136,0 136,18 130,25 136,32 136,50 100,50 100,32 106,25 100,18" />
                 <polygon points="148,0 188,0 188,50 148,50 148,36 156,28 148,20 156,12 148,0" />
               </svg>
-              <a href="https://github.com/awzheng/SageWall" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>SageWall</strong></a>, an ML Cloud Security System on AWS
+              <a href="https://github.com/awzheng/SageWall" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' built with AWS SageMaker' style={{ color: 'var(--accent)' }}><strong><u>SageWall</u></strong>, an ML Cloud Security System</a>
             </li>
             <li>
-              🌟 <a href="https://github.com/awzheng/CrawlStars" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>CrawlStars</strong></a>, a Concurrent Web Crawler + Search Engine
+              🌟 <a href="https://github.com/awzheng/CrawlStars" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' built with Golang' style={{ color: 'var(--accent)' }}><strong><u>CrawlStars</u></strong>, a Concurrent Web Crawler + Search Engine</a>
             </li>
             <li>
-              📖 <a href="https://github.com/awzheng/Mangaroo" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Mangaroo</strong></a>, a PDF-to-Manga AI Illustrator
+              📖 <a href="https://github.com/awzheng/Mangaroo" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' using Gemini 1.5 + Imagen 3' style={{ color: 'var(--accent)' }}><strong><u>Mangaroo</u></strong>, a PDF-to-Manga AI Illustrator</a>
             </li>
             <li>
-              🚎 <a href="https://github.com/waterloo-rocketry/canhw/tree/ra_respin_2025" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Remote Arming Board</strong></a> for Waterloo Rocketry
+              🚎 <a href="https://github.com/waterloo-rocketry/canhw/tree/ra_respin_2025" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong><u>Remote Arming Board</u></strong> for Waterloo Rocketry</a>
             </li>
             <li>
-              🦾 <a href="https://github.com/awzheng/emg-fabric" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>EMG Fabric Bionic Arm PCB</strong></a> for UW Biomechatronics
+              🦾 <a href="https://github.com/awzheng/emg-fabric" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong><u>EMG Fabric Bionic Arm PCB</u></strong> for UW Biomechatronics</a>
             </li>
             <li>
-              📚 View my <a href="https://docs.google.com/presentation/d/1IPV0oED7ZA_3K-oapaJplcr2cA3jqUmWFoVdGyBQ99s/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>portfolio</strong></a>
+              📚 View my <a href="https://docs.google.com/presentation/d/1IPV0oED7ZA_3K-oapaJplcr2cA3jqUmWFoVdGyBQ99s/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong><u>portfolio</u></strong></a>
             </li>
           </ul>
         </section>
@@ -90,13 +92,13 @@ export default function Home() {
           <h3>Writing</h3>
           <ul className="writing-list">
             <li>
-              SageWall <a href="https://github.com/awzheng/SageWall/blob/main/devlog.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Devlog</strong></a>
+              SageWall <a href="https://github.com/awzheng/SageWall/blob/main/devlog.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong><u>Devlog</u></strong></a>
             </li>
             <li>
-              CrawlStars <a href="https://github.com/awzheng/CrawlStars/blob/main/devlog.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Devlog</strong></a>
+              CrawlStars <a href="https://github.com/awzheng/CrawlStars/blob/main/devlog.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong><u>Devlog</u></strong></a>
             </li>
             <li>
-              Mangaroo <a href="https://github.com/awzheng/Mangaroo/blob/main/devlog.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Devlog</strong></a>
+              Mangaroo <a href="https://github.com/awzheng/Mangaroo/blob/main/devlog.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong><u>Devlog</u></strong></a>
             </li>
           </ul>
         </section>
@@ -106,7 +108,7 @@ export default function Home() {
           <h3>More</h3>
           <ul className="more-list">
             <li>
-              <a href="https://www.decadirect.org/articles/congratulations-to-the-2024-deca-icdc-competitive-event-champions" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>1st Place @ DECA ICDC 2024</strong></a> (BTDM) Los Angeles, CA
+              <a href="https://www.decadirect.org/articles/congratulations-to-the-2024-deca-icdc-competitive-event-champions" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' // video timestamp: 1:59:50' style={{ color: 'var(--accent)' }}><strong><u>1st Place @ DECA ICDC 2024</u></strong></a>
             </li>
           </ul>
         </section>

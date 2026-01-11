@@ -12,10 +12,10 @@ interface TypeWriterProps {
 
 export default function TypeWriter({
     words,
-    typingSpeed = 100,
-    deleteSpeed = 50,
+    typingSpeed = 80,
+    deleteSpeed = 60,
     delayAfterTyping = 2000,
-    delayAfterDeleting = 500,
+    delayAfterDeleting = 0,
 }: TypeWriterProps) {
     const [currentWordIndex, setCurrentWordIndex] = useState(0);
     const [currentText, setCurrentText] = useState('');

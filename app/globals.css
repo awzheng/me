@@ -15,6 +15,10 @@ body {
   overscroll-behavior: none;
 }
 
+html {
+  background-color: #0A404B;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -73,12 +77,12 @@ main {
 
 a {
   color: inherit;
-  text-decoration: underline;
+  text-decoration: none;
   transition: opacity 0.2s ease;
 }
 
 a:hover {
-  opacity: 0.7;
+  opacity: 1;
 }
 
 /* Typography */
@@ -244,3 +248,20 @@ code {
     opacity: 0;
   }
 }
+
+/* Typewriter Hover Effect Styles */
+.hover-text-span {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+/* The blinking cursor at the end of the typing
+.hover-text-span::after {
+  content: '|';
+  animation: blink 1s ease-in-out infinite;
+  color: #fff;
+  margin-left: 2px;
+} */
