@@ -51,7 +51,12 @@ export default function Home() {
           <h3 style={{ marginTop: '2rem' }}>Previously</h3>
           <ul className="experience-list">
             <li>
-              <strong>Case Contest Coach</strong> for my self-developed curriculum, 5-figures revenue
+              <span
+                className="typewriter-hover"
+                data-hover-text=" + generated 5-figure revenue"
+              >
+                <strong>Case Contest Coach</strong>, self-employed
+              </span>
             </li>
           </ul>
         </section>

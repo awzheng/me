@@ -31,7 +31,7 @@ export default function TypewriterHover() {
                             span.remove(); // Clean up the DOM when fully deleted
                         }
                     }, 30); // Speed: 30ms per character
-                }, 2000); // Wait 2000ms (2 seconds) before deleting
+                }, 1500); // Wait 2000ms (2 seconds) before deleting
             };
 
             const handleMouseEnter = () => {
