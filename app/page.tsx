@@ -75,7 +75,7 @@ export default function Home() {
               <a href="https://github.com/awzheng/SageWall" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' built with AWS SageMaker' style={{ color: 'var(--accent)' }}><strong><u>SageWall</u></strong>, an ML Cloud Security System</a>
             </li>
             <li>
-              🌟 <a href="https://github.com/awzheng/CrawlStars" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' built with Golang' style={{ color: 'var(--accent)' }}><strong><u>CrawlStars</u></strong>, a Concurrent Web Crawler + Search Engine</a>
+              🌟 <a href="https://github.com/awzheng/CrawlStars" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' from a Golang web crawler' style={{ color: 'var(--accent)' }}><strong><u>CrawlStars</u></strong>, a Concurrent Search Engine</a>
             </li>
             <li>
               📖 <a href="https://github.com/awzheng/Mangaroo" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' using Gemini 1.5 + Imagen 3' style={{ color: 'var(--accent)' }}><strong><u>Mangaroo</u></strong>, a PDF-to-Manga AI Illustrator</a>
