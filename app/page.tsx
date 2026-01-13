@@ -55,7 +55,7 @@ export default function Home() {
                 className="typewriter-hover"
                 data-hover-text=" + 5-figures in revenue"
               >
-                <strong>Case Contest Coach</strong>, self-employed
+                <strong>Case Contest Coach</strong>, self-founded
               </span>
             </li>
           </ul>
