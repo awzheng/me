@@ -2,7 +2,7 @@ import { Mail, Linkedin, Github, Twitter, FileText } from 'lucide-react';
 
 export default function SocialLinks() {
     const socials = [
-        { href: 'https://twitter.com/awhzheng', icon: Twitter, label: 'Twitter' },
+        // { href: 'https://twitter.com/awhzheng', icon: Twitter, label: 'Twitter' },
         { href: 'https://linkedin.com/in/andrewzheng2007', icon: Linkedin, label: 'LinkedIn' },
         { href: 'https://github.com/awzheng', icon: Github, label: 'GitHub' },
         { href: '/Andrew-Zheng-Resume.pdf', icon: FileText, label: 'Resume' },
