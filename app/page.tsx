@@ -53,9 +53,9 @@ export default function Home() {
             <li>
               <span
                 className="typewriter-hover"
-                data-hover-text=" + 5 figures in revenue"
+                data-hover-text=" 5 figures in revenue"
               >
-                <strong>Case Contest Coach</strong>, self-founded
+                <strong>Case Contest Coach</strong>, self-founded ▸
               </span>
             </li>
           </ul>
@@ -72,13 +72,13 @@ export default function Home() {
                 <polygon points="100,0 136,0 136,18 130,25 136,32 136,50 100,50 100,32 106,25 100,18" />
                 <polygon points="148,0 188,0 188,50 148,50 148,36 156,28 148,20 156,12 148,0" />
               </svg>
-              <a href="https://github.com/awzheng/SageWall" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' built with AWS SageMaker' style={{ color: 'var(--accent)' }}><strong><u>SageWall</u></strong>, an ML Cloud Security System</a>
+              <a href="https://github.com/awzheng/SageWall" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' built with AWS SageMaker' style={{ color: 'var(--accent)' }}><strong><u>SageWall</u></strong>, an ML Cloud Security System ▸</a>
             </li>
             <li>
-              🌟 <a href="https://github.com/awzheng/CrawlStars" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' from a Golang web crawler' style={{ color: 'var(--accent)' }}><strong><u>CrawlStars</u></strong>, a Concurrent Search Engine</a>
+              🌟 <a href="https://github.com/awzheng/CrawlStars" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' from a Golang web crawler' style={{ color: 'var(--accent)' }}><strong><u>CrawlStars</u></strong>, a Concurrent Search Engine ▸</a>
             </li>
             <li>
-              📖 <a href="https://github.com/awzheng/Mangaroo" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' using Gemini 1.5 + Imagen 3' style={{ color: 'var(--accent)' }}><strong><u>Mangaroo</u></strong>, a PDF-to-Manga AI Illustrator</a>
+              📖 <a href="https://github.com/awzheng/Mangaroo" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' using Gemini 1.5 + Imagen 3' style={{ color: 'var(--accent)' }}><strong><u>Mangaroo</u></strong>, a PDF-to-Manga AI Illustrator ▸</a>
             </li>
             <li>
               🚎 <a href="https://github.com/waterloo-rocketry/canhw/tree/ra_respin_2025" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong><u>Remote Arming Board</u></strong> for Waterloo Rocketry</a>
@@ -113,7 +113,7 @@ export default function Home() {
           <h3>More</h3>
           <ul className="more-list">
             <li>
-              <a href="https://www.decadirect.org/articles/congratulations-to-the-2024-deca-icdc-competitive-event-champions" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' // video timestamp: 1:59:50' style={{ color: 'var(--accent)' }}><strong><u>1st Place @ DECA ICDC 2024</u></strong></a>
+              <a href="https://www.decadirect.org/articles/congratulations-to-the-2024-deca-icdc-competitive-event-champions" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' video timestamp: 1:59:50' style={{ color: 'var(--accent)' }}><strong><u>1st Place @ DECA ICDC 2024</u></strong> ▸</a>
             </li>
           </ul>
         </section>
