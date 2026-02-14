@@ -45,6 +45,9 @@ export default function Home() {
             <li>
               Computer Engineering @ <a href="https://uwaterloo.ca/electrical-computer-engineering/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>University of Waterloo</strong></a>
             </li>
+            <li>
+              Incoming Software Engineering intern @ <a href="https://miovision.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Miovision</strong></a>
+            </li>
           </ul>
 
           {/* Previously */}
