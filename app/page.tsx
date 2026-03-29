@@ -71,7 +71,7 @@ export default function Home() {
               <AppIcon src="/images/icons/miovision.png" alt="Miovision" />
               <div className="sidebar-text">
                 <span className="sidebar-title">Miovision</span>
-                <span className="sidebar-subtitle">S26 Software Engineering Intern</span>
+                <span className="sidebar-subtitle">Software Engineering · Device Management</span>
               </div>
               <Chevron />
             </Link>
@@ -165,7 +165,7 @@ export default function Home() {
               {/* Allocate */}
               <div className="project-card">
                 <a
-                  href="https://github.com/awzheng/Allocate"
+                  href="https://allocate.awzheng.me/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="project-card-image-link"
@@ -180,7 +180,7 @@ export default function Home() {
                 <div className="project-card-text">
                   {/* <span className="project-card-category">Golang · MongoDB · Rest API</span> */}
                   <a
-                    href="https://github.com/awzheng/Allocate"
+                    href="https://allocate.awzheng.me/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-card-title"
