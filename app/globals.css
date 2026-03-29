@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -15,67 +13,89 @@ body {
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 html {
-  background-color: #0A404B;
+  background-color: #F5F5F7;
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif;
+  color: #1D1D1F;
   line-height: 1.6;
+  background-color: #F5F5F7;
 }
 
-/* Main container that holds everything */
+:root {
+  --accent: #0071E3;
+}
+
+/* ── Layout ──────────────────────────────────────── */
+
 main {
-  position: relative;
-  min-height: 100vh;
+  display: block;
+}
+
+/* Both columns are independent scroll containers — neither drives the
+   other's vertical position. The page itself does not scroll. */
+.page-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.618fr;
+  height: 100vh;
+  overflow: clip;
+}
+
+.left-col {
+  height: 100vh;
+  overflow-y: auto;
+  /* ↓ change the first value to shift awzheng.me up (smaller) or down (larger) */
+  padding: 2rem 2.5rem 3rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  /* Align content to center */
-  padding: 2rem 1rem;
+  flex-direction: column;
+  background-color: #F5F5F7;
+  border-right: 1px solid #E5E5EA;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Background image as separate layer for backdrop-filter to work */
-.background-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('/images/blindsighted.jpeg');
-  background-size: cover;
-  background-position: center;
-  /* Shore at bottom */
-  background-repeat: no-repeat;
-  z-index: 0;
-  /* Disable user interactions with background */
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-select: none;
+.right-col {
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #FFFFFF;
+  padding: 0;
+}
+
+@media (max-width: 767px) {
+  .page-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+    overflow: visible;
+  }
+
+  .left-col {
+    height: auto;
+    overflow-y: visible;
+    border-right: none;
+    border-bottom: 1px solid #E5E5EA;
+    padding: 2rem 1.5rem;
+  }
+
+  .right-col {
+    height: auto;
+    overflow-y: visible;
+  }
+}
+
+/* ── Base ────────────────────────────────────────── */
+
+img {
   -webkit-user-drag: none;
-}
-
-/* Main content card with glass morphism */
-.content-card {
-  background: rgba(10, 10, 10, 0.2);
-  border-radius: 16px;
-  padding: 3rem 2.5rem;
-  max-width: 700px;
-  width: 100%;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.2),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(0, 0, 0, 0);
-  position: relative;
-  z-index: 1;
-  margin-bottom: 0;
-  backdrop-filter: blur(5px) saturate(100%);
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
 }
 
 a {
@@ -85,91 +105,107 @@ a {
 }
 
 a:hover {
-  opacity: 1;
-}
-
-/* Typography */
-h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #ffffff;
-}
-
-h3 {
-  font-size: 1.125rem;
-  font-weight: 500;
-  margin-bottom: 0.75rem;
-  color: #ffffff;
-}
-
-p {
-  margin-bottom: 1rem;
-  line-height: 1.7;
-}
-
-/* Layout utilities */
-.section {
-  margin-bottom: 3rem;
-}
-
-/* Links with special styling */
-.nav-link {
-  font-size: 0.95rem;
-  margin: 0 0.75rem;
-  color: #ffffff;
-  font-weight: 400;
-}
-
-.nav-link:hover {
   opacity: 0.7;
 }
 
-/* List styles */
-ul {
-  list-style: none;
+/* ── Typography ──────────────────────────────────── */
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: #1D1D1F;
+  letter-spacing: -0.015em;
+  /* margin: -0.25rem; */
 }
 
-.experience-list li,
-.project-list li,
-.writing-list li,
-.more-list li {
+h2 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: #1D1D1F;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #86868B;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  margin-bottom: 0.875rem;
+}
+
+p {
+  line-height: 1.7;
+  color: #1D1D1F;
+}
+
+/* ── Sections ────────────────────────────────────── */
+
+.section {
   margin-bottom: 0.75rem;
-  padding-left: 1.25rem;
-  position: relative;
 }
 
-.experience-list li::before {
-  content: "◆";
-  position: absolute;
-  left: 0;
-  color: #ffffff;
+/* ── Header ──────────────────────────────────────── */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  /* margin-bottom: 2.5rem; */
+  /* border-bottom: 1px solid #E5E5EA; */
+
 }
 
-.project-list li::before,
-.writing-list li::before,
-.more-list li::before {
-  content: "↳";
-  position: absolute;
-  left: 0;
-  color: #ffffff;
+/* ── Golden ratio image ──────────────────────────── */
+
+.sidebar-golden-ratio {
+  width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 16px;
+  border: 1px solid #E5E5EA;
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-/* Social icons */
+.sidebar-golden-ratio:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.09);
+}
+
+.sidebar-golden-ratio img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.golden-ratio-caption {
+  text-align: center;
+  font-size: 11px;
+  color: #8E8E93;
+  padding: 6px 0 4px;
+  letter-spacing: 0.02em;
+}
+
+/* ── Footer ──────────────────────────────────────── */
+
+.footer {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  font-size: 12px;
+  color: #8E8E93;
+  line-height: 1.6;
+}
+
+/* ── Social links ────────────────────────────────── */
+
 .social-links {
   display: flex;
   gap: 0.75rem;
 }
 
 .social-links a {
-  color: #ffffff;
+  color: #86868B;
   transition: opacity 0.2s ease;
 }
 
@@ -177,59 +213,209 @@ ul {
   opacity: 0.7;
 }
 
-/* Header */
-.header {
+/* ── Lists ───────────────────────────────────────── */
+
+ul {
+  list-style: none;
+}
+
+.experience-list li,
+.writing-list li,
+.more-list li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  position: relative;
+  color: #1D1D1F;
+  font-size: 0.9375rem;
+}
+
+.experience-list li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  color: #86868B;
+  font-size: 0.55em;
+  top: 0.42em;
+}
+
+.writing-list li::before,
+.more-list li::before {
+  content: "↳";
+  position: absolute;
+  left: 0;
+  color: #86868B;
+}
+
+/* ── Sidebar items (iOS App Store list style) ────── */
+
+.sidebar-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding-bottom: 1rem;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  gap: 12px;
+  padding: 12px 8px;
+  border-bottom: 1px solid #E5E5EA;
+  border-radius: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-radius 0.2s ease;
 }
 
-/* Footer */
-.footer {
-  text-align: center;
-  padding-top: 2rem;
-  margin-top: 2rem;
-  color: #ffffff;
-  font-size: 0.875rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+.section .sidebar-item:last-child {
+  border-bottom: none;
 }
 
-/* Code/monospace elements */
-code {
-  font-family: 'Monaco', 'Courier New', monospace;
-  font-size: 0.9em;
-  color: #cb4b16;
+a.sidebar-item {
+  cursor: pointer;
 }
 
-/* Responsive */
-@media (max-width: 640px) {
-  body {
-    padding: 1rem 0.5rem;
-  }
-
-  .content-card {
-    padding: 2rem 1.5rem;
-    border-radius: 12px;
-  }
-
-  h1 {
-    font-size: 1.75rem;
-  }
-
-  h2 {
-    font-size: 1.25rem;
-  }
-
-  .nav-link {
-    margin: 0 0.5rem;
-    font-size: 0.875rem;
-  }
+a.sidebar-item:hover {
+  opacity: 1;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
 }
 
-/* TypeWriter Animation */
+.sidebar-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.sidebar-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sidebar-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.sidebar-title {
+  font-weight: 450;
+  font-size: 15px;
+  color: #000000;
+  line-height: 1.3;
+}
+
+.sidebar-subtitle {
+  font-weight: 400;
+  font-size: 13px;
+  color: #8E8E93;
+  line-height: 1.3;
+}
+
+.sidebar-chevron {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: #C7C7CC;
+}
+
+/* ── Project grid ────────────────────────────────── */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+
+/* ── Project cards (App Store editorial style) ───── */
+
+.project-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E5E5EA;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.09);
+}
+
+/* Clickable image area — suppresses global a:hover opacity so we
+   can apply a more intentional brightness shift instead */
+.project-card-image-link {
+  display: block;
+  flex-shrink: 0;
+}
+
+.project-card-image-link:hover {
+  opacity: 1;
+}
+
+.project-card-image-link:hover .project-card-image {
+  filter: brightness(0.82);
+}
+
+.project-card-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.18s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card-thumbnail {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  bottom: 0;
+  width: calc(100% - 48px);
+  height: calc(100% - 24px);
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  border-radius: 8px 8px 0 0;
+}
+
+.project-card-text {
+  padding: 0.875rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.project-card-category {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #86868B;
+}
+
+.project-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1D1D1F;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+  display: block;
+}
+
+.project-card-title:hover {
+  opacity: 0.7;
+}
+
+.project-card-subtitle {
+  font-size: 0.8125rem;
+  color: #86868B;
+  line-height: 1.4;
+}
+
+/* ── Typewriter ──────────────────────────────────── */
+
 .typewriter {
   display: inline-block;
 }
@@ -241,30 +427,155 @@ code {
 }
 
 @keyframes blink {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-/* Typewriter Hover Effect Styles */
+/* ── Typewriter Hover ────────────────────────────── */
+
 .hover-text-span {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif;
+  color: #1D1D1F;
   line-height: 1.6;
 }
 
-/* The blinking cursor at the end of the typing
-.hover-text-span::after {
-  content: '|';
-  animation: blink 1s ease-in-out infinite;
-  color: #fff;
-  margin-left: 2px;
-} */
+/* ── Code ────────────────────────────────────────── */
+
+code {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+  color: #1D1D1F;
+}
+
+/* ── Projects sticky header ──────────────────────── */
+
+.projects-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  border-bottom: 1px solid rgba(229, 229, 234, 0.6);
+
+  /* CRITICAL: The parent must be transparent so the ::before layer shows through */
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  /* Keep the border transition on the parent */
+  transition: border-color 0.3s ease;
+}
+
+/* THE CHROME FIX: Isolate the glass effect in an empty, absolute child */
+.projects-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  /* Move the glass colors and filters here */
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(6px) saturate(180%);
+  -webkit-backdrop-filter: blur(6px) saturate(180%);
+
+  /* Add the background transition here if you want smooth theme toggling later */
+  transition: background-color 0.3s ease;
+}
+
+.projects-header-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #1D1D1F;
+  transition: color 0.3s ease;
+}
+
+/* ── Dark Mode ───────────────────────────────────── */
+
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+  background-color: #000000;
+  color: #F5F5F7;
+}
+
+html[data-theme="dark"] .left-col {
+  background-color: #1C1C1E;
+  border-right-color: #38383A;
+}
+
+html[data-theme="dark"] .right-col {
+  background-color: #000000;
+}
+
+html[data-theme="dark"] .projects-header {
+  border-bottom-color: rgba(56, 56, 58, 0.6);
+}
+
+html[data-theme="dark"] .projects-header::before {
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+html[data-theme="dark"] .projects-header-title {
+  color: #F5F5F7;
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2 {
+  color: #F5F5F7;
+}
+
+html[data-theme="dark"] h3 {
+  color: #636366;
+}
+
+html[data-theme="dark"] .sidebar-item {
+  border-bottom-color: #38383A;
+}
+
+html[data-theme="dark"] .sidebar-title {
+  color: #F5F5F7;
+}
+
+html[data-theme="dark"] .sidebar-subtitle {
+  color: #8E8E93;
+}
+
+html[data-theme="dark"] .sidebar-chevron {
+  color: #48484A;
+}
+
+html[data-theme="dark"] .sidebar-golden-ratio {
+  border-color: #38383A;
+}
+
+html[data-theme="dark"] .golden-ratio-caption {
+  color: #636366;
+}
+
+html[data-theme="dark"] .project-card {
+  background-color: #1C1C1E;
+  border-color: #38383A;
+}
+
+html[data-theme="dark"] .project-card-title {
+  color: #F5F5F7;
+}
+
+html[data-theme="dark"] .project-card-subtitle {
+  color: #8E8E93;
+}
+
+html[data-theme="dark"] .project-card-category {
+  color: #636366;
+}
+
+html[data-theme="dark"] .social-links a {
+  color: #48484A;
+}
+
+html[data-theme="dark"] .footer {
+  color: #48484A;
+}

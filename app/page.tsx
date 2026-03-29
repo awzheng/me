@@ -1,130 +1,348 @@
+/* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import SocialLinks from "./components/SocialLinks";
-import TypeWriter from "./components/TypeWriter";
-import TypewriterHover from "./components/TypewriterHover";
+import GoldenRatioImage from "./components/GoldenRatioImage";
+
+const Chevron = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="sidebar-chevron"
+  >
+    <path d="m9 18 6-6-6-6" />
+  </svg>
+);
+
+const AppIcon = ({ src, alt }: { src: string; alt: string }) => (
+  <div className="sidebar-icon">
+    <img src={src} alt={alt} draggable={false} />
+  </div>
+);
 
 export default function Home() {
-  // Customizable word list for the typing animation
-  const typingWords = [
-    "UWaterloo",
-    "Comp Eng",
-    "System Design",
-    "Guitar",
-    "Bodybuilding",
-    "Lofi Records",
-    "Ninja Creami",
-    "Psychology",
-    "Markham",
-  ];
-
   return (
     <main>
-      <TypewriterHover />
-      <div className="background-layer" aria-hidden="true"></div>
-      <div className="content-card">
-        {/* Header */}
-        <header className="header">
-          <h1 style={{ fontSize: '1.25rem', fontWeight: 500, margin: 0 }}>awzheng.me</h1>
-          <SocialLinks />
-        </header>
+      <div className="page-grid">
 
-        {/* About Section */}
-        <section id="about" className="section">
-          <p style={{ fontSize: '1rem', marginBottom: '2rem' }}>
-            Andrew ❤️ <TypeWriter
-              words={typingWords}
-              typingSpeed={80}
-              deleteSpeed={60}
-              delayAfterTyping={2000}
-              delayAfterDeleting={0}
+        {/* ── Left Column: Sticky Sidebar ──────────────────── */}
+        <div className="left-col">
+          <header className="header">
+            <h1>Andrew Zheng</h1>
+            <SocialLinks />
+          </header>
+
+          {/* Education */}
+          <section className="section" id="education">
+
+            {/* University of Waterloo */}
+            <Link
+              href="https://uwaterloo.ca/electrical-computer-engineering/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sidebar-item"
+            >
+              <AppIcon src="/images/icons/waterloo-logo.jpg" alt="University of Waterloo" />
+              <div className="sidebar-text">
+                <span className="sidebar-title">University of Waterloo</span>
+                <span className="sidebar-subtitle">Computer Engineering</span>
+              </div>
+              <Chevron />
+            </Link>
+          </section>
+
+          {/* Experience */}
+          <section className="section" id="about">
+            <h2>Experience</h2>
+
+            {/* Miovision*/}
+            <Link
+              href="https://miovision.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sidebar-item"
+            >
+              <AppIcon src="/images/icons/miovision.png" alt="Miovision" />
+              <div className="sidebar-text">
+                <span className="sidebar-title">Miovision</span>
+                <span className="sidebar-subtitle">S26 Software Engineering Intern</span>
+              </div>
+              <Chevron />
+            </Link>
+
+            {/* Rocketry*/}
+            <Link
+              href="https://www.waterloorocketry.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sidebar-item"
+            >
+              <AppIcon src="/images/icons/rocketry.png" alt="Waterloo Rocketry" />
+              <div className="sidebar-text">
+                <span className="sidebar-title">Waterloo Rocketry</span>
+                <span className="sidebar-subtitle">Embedded Systems Developer</span>
+              </div>
+              <Chevron />
+            </Link>
+
+            {/* Case Contest Coach */}
+            <a
+              href="javascript:void(0)"
+              className="sidebar-item"
+            >
+              <AppIcon src="/images/icons/case.png" alt="Case Contest Coach" />
+              <div className="sidebar-text">
+                <span className="sidebar-title">Self-Employed</span>
+                <span className="sidebar-subtitle">Case Contest Coach · $10K revenue</span>
+              </div>
+              <Chevron />
+            </a>
+
+            {/* DECA ICDC 2024 */}
+            <Link
+              href="https://www.decadirect.org/articles/congratulations-to-the-2024-deca-icdc-competitive-event-champions"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sidebar-item"
+            >
+              <AppIcon src="/images/icons/deca.png" alt="DECA ICDC 2024" />
+              <div className="sidebar-text">
+                <span className="sidebar-title">DECA ICDC 2024</span>
+                <span className="sidebar-subtitle">1st Place Glass · BTDM</span>
+              </div>
+              <Chevron />
+            </Link>
+          </section>
+
+          {/* Golden Ratio decorative image */}
+          <GoldenRatioImage />
+
+          <footer className="footer">
+            Designed by Andrew Zheng in Markham<br />Made in Waterloo
+          </footer>
+        </div>
+
+        {/* ── Right Column: Scrollable Main Content ────────── */}
+        <div className="right-col" id="projects">
+
+          {/* Sticky Discover Header */}
+          <header className="projects-header">
+            <span className="projects-header-title">Projects</span>
+          </header>
+
+          {/* Hero Banner — inset to card width (2rem each side), pulled up
+               so Discover header overlays the top edge via negative margin. */}
+          <div style={{ padding: '0 2rem', marginTop: '-3rem' }}>
+            <img
+              src="/images/blindsighted.jpeg"
+              alt="Blindsighted"
+              draggable={false}
+              style={{
+                display: 'block',
+                width: '100%',
+                aspectRatio: '21 / 9',
+                objectFit: 'cover',
+                objectPosition: 'top',
+                borderRadius: '0.75rem',
+              }}
             />
-          </p>
+          </div>
 
-          {/* Currently */}
-          <h3>Currently</h3>
-          <ul className="experience-list">
-            <li>
-              Computer Engineering @ <a href="https://uwaterloo.ca/electrical-computer-engineering/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>University of Waterloo</strong></a>
-            </li>
-            <li>
-              Incoming Software Engineering Intern @ <a href="https://miovision.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong>Miovision</strong></a>
-            </li>
-          </ul>
+          {/* Projects Grid */}
+          <div style={{ padding: '1.5rem 2rem 2.5rem' }}>
+            {/* <h3 style={{ marginBottom: '1rem' }}>Projects</h3> */}
+            <div className="project-grid">
 
-          {/* Previously */}
-          <h3 style={{ marginTop: '2rem' }}>Previously</h3>
-          <ul className="experience-list">
-            <li>
-              <span
-                className="typewriter-hover"
-                data-hover-text=" 5 figures in revenue"
-              >
-                <strong>Case Contest Coach</strong>, self-founded ▸
-              </span>
-            </li>
-          </ul>
-        </section>
+              {/* Allocate */}
+              <div className="project-card">
+                <a
+                  href="https://github.com/awzheng/Allocate"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-card-image-link"
+                >
+                  <div
+                    className="project-card-image"
+                    style={{ background: 'linear-gradient(135deg, #1a2d4f 0%, #0096ff 100%)' }}
+                  >
+                    <img className="project-card-thumbnail" src="/images/project-thumbnails/allocate.png" alt="Allocate" draggable={false} />
+                  </div>
+                </a>
+                <div className="project-card-text">
+                  {/* <span className="project-card-category">Golang · MongoDB · Rest API</span> */}
+                  <a
+                    href="https://github.com/awzheng/Allocate"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card-title"
+                  >Allocate</a>
+                  <span className="project-card-subtitle">Proactive macOS CPU Core Manager</span>
+                </div>
+              </div>
 
-        {/* Projects */}
-        <section id="projects" className="section">
-          <h3>Projects</h3>
-          <ul className="project-list">
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="#4ECDC4" style={{ width: '1.8em', height: '1em', display: 'inline-block', verticalAlign: 'middle', marginRight: '0.25em' }}>
-                <polygon points="0,0 40,0 40,12 32,20 40,28 32,36 40,50 0,50" />
-                <polygon points="52,0 88,0 88,18 82,25 88,32 88,50 52,50 52,32 58,25 52,18" />
-                <polygon points="100,0 136,0 136,18 130,25 136,32 136,50 100,50 100,32 106,25 100,18" />
-                <polygon points="148,0 188,0 188,50 148,50 148,36 156,28 148,20 156,12 148,0" />
-              </svg>
-              <a href="https://github.com/awzheng/SageWall" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' built with AWS SageMaker' style={{ color: 'var(--accent)' }}><strong><u>SageWall</u></strong>, an ML Cloud Security System ▸</a>
-            </li>
-            <li>
-              🌟 <a href="https://github.com/awzheng/CrawlStars" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' from a Golang web crawler' style={{ color: 'var(--accent)' }}><strong><u>CrawlStars</u></strong>, a Concurrent Search Engine ▸</a>
-            </li>
-            <li>
-              📖 <a href="https://github.com/awzheng/Mangaroo" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' using Gemini 1.5 + Imagen 3' style={{ color: 'var(--accent)' }}><strong><u>Mangaroo</u></strong>, a PDF-to-Manga AI Illustrator ▸</a>
-            </li>
-            <li>
-              🚎 <a href="https://github.com/waterloo-rocketry/canhw/tree/ra_respin_2025" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong><u>Remote Arming Board</u></strong> for Waterloo Rocketry</a>
-            </li>
-            <li>
-              🦾 <a href="https://github.com/awzheng/emg-fabric" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong><u>EMG Fabric Bionic Arm PCB</u></strong> for UW Biomechatronics</a>
-            </li>
-            <li>
-              📚 View my <a href="https://docs.google.com/presentation/d/1IPV0oED7ZA_3K-oapaJplcr2cA3jqUmWFoVdGyBQ99s/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong><u>portfolio</u></strong></a>
-            </li>
-          </ul>
-        </section>
+              {/* SageWall */}
+              <div className="project-card">
+                <a
+                  href="https://github.com/awzheng/SageWall"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-card-image-link"
+                >
+                  <div
+                    className="project-card-image"
+                    style={{ background: 'linear-gradient(135deg, #1a3a38 0%, #3dbdb6 100%)' }}
+                  >
+                    <img className="project-card-thumbnail" src="/images/project-thumbnails/sagewall.png" alt="SageWall" draggable={false} />
+                  </div>
+                </a>
+                <div className="project-card-text">
+                  {/* <span className="project-card-category">AWS · Python · Machine Learning</span> */}
+                  <a
+                    href="https://github.com/awzheng/SageWall"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card-title"
+                  >SageWall</a>
+                  <span className="project-card-subtitle">MLOps Cloud Security System</span>
+                </div>
+              </div>
 
-        {/* Writing */}
-        <section id="writing" className="section">
-          <h3>Writing</h3>
-          <ul className="writing-list">
-            <li>
-              SageWall <a href="https://github.com/awzheng/SageWall/blob/main/devlog.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong><u>Devlog</u></strong></a>
-            </li>
-            <li>
-              CrawlStars <a href="https://github.com/awzheng/CrawlStars/blob/main/devlog.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong><u>Devlog</u></strong></a>
-            </li>
-            <li>
-              Mangaroo <a href="https://github.com/awzheng/Mangaroo/blob/main/devlog.md" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}><strong><u>Devlog</u></strong></a>
-            </li>
-          </ul>
-        </section>
+              {/* CrawlStars */}
+              <div className="project-card">
+                <a
+                  href="https://github.com/awzheng/CrawlStars"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-card-image-link"
+                >
+                  <div
+                    className="project-card-image"
+                    style={{ background: 'linear-gradient(135deg, #4f1a2f 0%, #c9953e 100%)' }}
+                  >
+                    <img className="project-card-thumbnail" src="/images/project-thumbnails/crawlstars.png" alt="CrawlStars" draggable={false} />
+                  </div>
+                </a>
+                <div className="project-card-text">
+                  {/* <span className="project-card-category">Golang · MongoDB · Rest API</span> */}
+                  <a
+                    href="https://github.com/awzheng/CrawlStars"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card-title"
+                  >CrawlStars</a>
+                  <span className="project-card-subtitle">Concurrent Search Engine</span>
+                </div>
+              </div>
 
-        {/* More */}
-        <section id="more" className="section">
-          <h3>More</h3>
-          <ul className="more-list">
-            <li>
-              <a href="https://www.decadirect.org/articles/congratulations-to-the-2024-deca-icdc-competitive-event-champions" target="_blank" rel="noopener noreferrer" className="typewriter-hover" data-hover-text=' video timestamp: 1:59:50' style={{ color: 'var(--accent)' }}><strong><u>1st Place @ DECA ICDC 2024</u></strong> ▸</a>
-            </li>
-          </ul>
-        </section>
+              {/* Autotoon */}
+              <div className="project-card">
+                <a
+                  href="https://github.com/awzheng/Autotoon"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-card-image-link"
+                >
+                  <div
+                    className="project-card-image"
+                    style={{ background: 'linear-gradient(135deg, #2d1b4e 0%, #c44dce 100%)' }}
+                  >
+                    <img className="project-card-thumbnail" src="/images/project-thumbnails/autotoon.png" alt="Autotoon" draggable={false} />
+                  </div>
+                </a>
+                <div className="project-card-text">
+                  {/* <span className="project-card-category">Generative AI</span> */}
+                  <a
+                    href="https://github.com/awzheng/Autotoon"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card-title"
+                  >Autotoon</a>
+                  <span className="project-card-subtitle">PDF-to-Manga AI Illustrator</span>
+                </div>
+              </div>
 
-        {/* Footer */}
-        <footer className="footer">
-          <p>© 2026 Andrew Zheng</p>
-        </footer>
+              {/* Remote Arming Board */}
+              <div className="project-card">
+                <a
+                  href="https://github.com/waterloo-rocketry/canhw/tree/ra_respin_2025"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-card-image-link"
+                >
+                  <div
+                    className="project-card-image"
+                    style={{ background: 'linear-gradient(135deg, #3b1200 0%, #e05c1a 100%)' }}
+                  >
+                    <span style={{ fontSize: '2.25rem' }}>🚀</span>
+                  </div>
+                </a>
+                <div className="project-card-text">
+                  {/* <span className="project-card-category">Hardware · Embedded</span> */}
+                  <a
+                    href="https://github.com/waterloo-rocketry/canhw/tree/ra_respin_2025"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card-title"
+                  >Remote Arming PCB</a>
+                  <span className="project-card-subtitle">Waterloo Rocketry</span>
+                </div>
+              </div>
+
+              {/* EMG Fabric Bionic Arm */}
+              <div className="project-card">
+                <a
+                  href="https://github.com/awzheng/emg-fabric"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-card-image-link"
+                >
+                  <div
+                    className="project-card-image"
+                    style={{ background: 'linear-gradient(135deg, #0d2b1b 0%, #28a36e 100%)' }}
+                  >
+                    <span style={{ fontSize: '2.25rem' }}>🦾</span>
+                  </div>
+                </a>
+                <div className="project-card-text">
+                  {/* <span className="project-card-category">Hardware · PCB</span> */}
+                  <a
+                    href="https://github.com/awzheng/emg-fabric"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card-title"
+                  >EMG Fabric Bionic Arm PCB</a>
+                  <span className="project-card-subtitle">UW Biomechatronics</span>
+                </div>
+              </div>
+
+              {/* Portfolio */}
+              {/* <div className="project-card">
+                <div className="project-card-image" style={{ background: 'linear-gradient(135deg, #1a1a2e 0%, #6c63ff 100%)' }}>
+                  <span style={{ fontSize: '2.25rem' }}>📚</span>
+                </div>
+                <div className="project-card-text">
+                  <span className="project-card-category">Design</span>
+                  <a
+                    href="https://docs.google.com/presentation/d/1IPV0oED7ZA_3K-oapaJplcr2cA3jqUmWFoVdGyBQ99s/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card-title"
+                  >Portfolio</a>
+                  <span className="project-card-subtitle">Design & project portfolio</span>
+                </div>
+              </div> */}
+
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </main>
   );
