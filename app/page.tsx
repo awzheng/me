@@ -92,8 +92,10 @@ export default function Home() {
             </Link>
 
             {/* Case Contest Coach */}
-            <a
-              href="javascript:void(0)"
+            <Link
+              href="https://www.decadirect.org/articles/congratulations-to-the-2024-deca-icdc-competitive-event-champions"
+              target="_blank"
+              rel="noopener noreferrer"
               className="sidebar-item"
             >
               <AppIcon src="/images/icons/case.png" alt="Case Contest Coach" />
@@ -102,10 +104,10 @@ export default function Home() {
                 <span className="sidebar-subtitle">Case Contest Coach · $10K revenue</span>
               </div>
               <Chevron />
-            </a>
+            </Link>
 
             {/* DECA ICDC 2024 */}
-            <Link
+            {/* <Link
               href="https://www.decadirect.org/articles/congratulations-to-the-2024-deca-icdc-competitive-event-champions"
               target="_blank"
               rel="noopener noreferrer"
@@ -117,7 +119,7 @@ export default function Home() {
                 <span className="sidebar-subtitle">1st Place Glass · BTDM</span>
               </div>
               <Chevron />
-            </Link>
+            </Link> */}
           </section>
 
 
