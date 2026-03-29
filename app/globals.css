@@ -162,6 +162,7 @@ p {
 .sidebar-golden-ratio {
   width: 100%;
   margin-top: 0.5rem;
+  margin-bottom: 1rem;
   border-radius: 16px;
   border: 1px solid #E5E5EA;
   overflow: hidden;

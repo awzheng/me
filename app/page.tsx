@@ -120,10 +120,11 @@ export default function Home() {
             </Link>
           </section>
 
-          {/* Golden Ratio decorative image */}
-          <GoldenRatioImage />
+
 
           <footer className="footer">
+            {/* Golden Ratio decorative image */}
+            <GoldenRatioImage />
             Designed by Andrew Zheng in Markham<br />Made in Waterloo
           </footer>
         </div>
