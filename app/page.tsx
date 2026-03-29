@@ -282,7 +282,7 @@ export default function Home() {
                     className="project-card-image"
                     style={{ background: 'linear-gradient(135deg, #3b1200 0%, #e05c1a 100%)' }}
                   >
-                    <span style={{ fontSize: '2.25rem' }}>🚀</span>
+                    <img className="project-card-thumbnail" src="/images/project-thumbnails/rocketry-pcb.png" alt="Remote Arming PCB" draggable={false} />
                   </div>
                 </a>
                 <div className="project-card-text">
@@ -309,7 +309,7 @@ export default function Home() {
                     className="project-card-image"
                     style={{ background: 'linear-gradient(135deg, #0d2b1b 0%, #28a36e 100%)' }}
                   >
-                    <span style={{ fontSize: '2.25rem' }}>🦾</span>
+                    <img className="project-card-thumbnail" src="/images/project-thumbnails/bionic-arm-pcb.jpg" alt="EMG Fabric Bionic Arm PCB" draggable={false} />
                   </div>
                 </a>
                 <div className="project-card-text">

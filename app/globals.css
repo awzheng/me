@@ -160,9 +160,11 @@ p {
 /* ── Golden ratio image ──────────────────────────── */
 
 .sidebar-golden-ratio {
-  width: 100%;
+  width: 90%;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 16px;
   border: 1px solid #E5E5EA;
   overflow: hidden;
@@ -196,6 +198,7 @@ p {
   font-size: 12px;
   color: #8E8E93;
   line-height: 1.6;
+  margin-bottom: -1.5rem;
 }
 
 /* ── Social links ────────────────────────────────── */
@@ -369,12 +372,12 @@ a.sidebar-item:hover {
 
 .project-card-thumbnail {
   position: absolute;
-  top: 24px;
-  left: 24px;
-  right: 24px;
+  top: 20px;
+  left: 20px;
+  right: 20px;
   bottom: 0;
-  width: calc(100% - 48px);
-  height: calc(100% - 24px);
+  width: calc(100% - 40px);
+  height: calc(100% - 20px);
   object-fit: cover;
   object-position: top;
   display: block;
@@ -469,20 +472,29 @@ code {
   transition: border-color 0.3s ease;
 }
 
-/* THE CHROME FIX: Isolate the glass effect in an empty, absolute child */
+/* Glass layer: absolute pseudo-element keeps content stacking clean */
 .projects-header::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-
-  /* Move the glass colors and filters here */
-  background-color: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(6px) saturate(180%);
-  -webkit-backdrop-filter: blur(6px) saturate(180%);
-
-  /* Add the background transition here if you want smooth theme toggling later */
   transition: background-color 0.3s ease;
+
+  /* Chrome fallback: solid near-opaque — backdrop-filter on position:sticky
+     inside overflow-y:auto containers is broken in Chrome's GPU compositor
+     (Chromium issue #820903). Safari composites correctly so gets the blur
+     via the @supports block below. */
+  background-color: rgba(255, 255, 255, 0.92);
+}
+
+/* Safari-only blur — `hanging-punctuation` is a CSS property exclusively
+   implemented by Safari; Chrome never has, making it a reliable feature gate. */
+@supports (hanging-punctuation: first) {
+  .projects-header::before {
+    background-color: rgba(255, 255, 255, 0.65);
+    -webkit-backdrop-filter: blur(6px) saturate(180%);
+    backdrop-filter: blur(6px) saturate(180%);
+  }
 }
 
 .projects-header-title {
@@ -516,7 +528,15 @@ html[data-theme="dark"] .projects-header {
 }
 
 html[data-theme="dark"] .projects-header::before {
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.92); /* Chrome fallback */
+}
+
+@supports (hanging-punctuation: first) {
+  html[data-theme="dark"] .projects-header::before {
+    background-color: rgba(0, 0, 0, 0.65);
+    -webkit-backdrop-filter: blur(6px) saturate(180%);
+    backdrop-filter: blur(6px) saturate(180%);
+  }
 }
 
 html[data-theme="dark"] .projects-header-title {
