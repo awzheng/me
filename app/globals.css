@@ -49,6 +49,7 @@ main {
 .left-col {
   height: 100vh;
   overflow-y: auto;
+  scrollbar-gutter: stable;
   /* ↓ change the first value to shift awzheng.me up (smaller) or down (larger) */
   padding: 2rem 2.5rem 3rem;
   display: flex;
