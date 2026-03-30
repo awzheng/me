@@ -319,7 +319,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-card-title"
-                  >EMG Fabric Bionic Arm PCB</a>
+                  >Bionic Arm PCB</a>
                   <span className="project-card-subtitle">UW Biomechatronics</span>
                 </div>
               </div>
