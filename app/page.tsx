@@ -178,7 +178,7 @@ export default function Home() {
                   </div>
                 </a>
                 <div className="project-card-text">
-                  <span className="project-card-category">XNU Kernel · Rust · Swift</span>
+                  <span className="project-card-category">XNU Kernel</span>
                   <a
                     href="https://allocate.awzheng.me/"
                     target="_blank"
@@ -205,14 +205,14 @@ export default function Home() {
                   </div>
                 </a>
                 <div className="project-card-text">
-                  <span className="project-card-category">AWS · Python · Machine Learning</span>
+                  <span className="project-card-category">Cloud ⋅ MLOps</span>
                   <a
                     href="https://github.com/awzheng/SageWall"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-card-title"
                   >SageWall</a>
-                  <span className="project-card-subtitle">MLOps Cloud Security System</span>
+                  <span className="project-card-subtitle">Event-Driven IDS</span>
                 </div>
               </div>
 
@@ -232,14 +232,14 @@ export default function Home() {
                   </div>
                 </a>
                 <div className="project-card-text">
-                  <span className="project-card-category">Golang · MongoDB · Rest API</span>
+                  <span className="project-card-category">Concurrency</span>
                   <a
                     href="https://github.com/awzheng/CrawlStars"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-card-title"
                   >CrawlStars</a>
-                  <span className="project-card-subtitle">Concurrent Search Engine</span>
+                  <span className="project-card-subtitle">Distributed Search Engine</span>
                 </div>
               </div>
 
@@ -259,14 +259,14 @@ export default function Home() {
                   </div>
                 </a>
                 <div className="project-card-text">
-                  <span className="project-card-category">Generative AI</span>
+                  <span className="project-card-category">Applied AI</span>
                   <a
                     href="https://github.com/awzheng/Autotoon"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-card-title"
                   >Autotoon</a>
-                  <span className="project-card-subtitle">PDF-to-Manga AI Illustrator</span>
+                  <span className="project-card-subtitle">PDF Illustrator</span>
                 </div>
               </div>
 
