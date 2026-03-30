@@ -185,7 +185,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="project-card-title"
                   >Allocate</a>
-                  <span className="project-card-subtitle">macOS CPU Core Governor</span>
+                  <span className="project-card-subtitle">macOS CPU Governor</span>
                 </div>
               </div>
 
