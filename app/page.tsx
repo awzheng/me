@@ -320,7 +320,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="project-card-title"
                   >Bionic Arm PCB</a>
-                  <span className="project-card-subtitle">UW Biomechatronics</span>
+                  <span className="project-card-subtitle">UW Biotron</span>
                 </div>
               </div>
 
