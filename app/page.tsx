@@ -172,20 +172,20 @@ export default function Home() {
                 >
                   <div
                     className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #1a2d4f 0%, #0096ff 100%)' }}
+                    style={{ background: 'linear-gradient(135deg, #cce6ff 0%, #0096ff 100%)' }}
                   >
                     <img className="project-card-thumbnail" src="/images/project-thumbnails/allocate.png" alt="Allocate" draggable={false} />
                   </div>
                 </a>
                 <div className="project-card-text">
-                  {/* <span className="project-card-category">Golang · MongoDB · Rest API</span> */}
+                  <span className="project-card-category">XNU Kernel · Rust · Swift</span>
                   <a
                     href="https://allocate.awzheng.me/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-card-title"
                   >Allocate</a>
-                  <span className="project-card-subtitle">Proactive macOS CPU Core Governor</span>
+                  <span className="project-card-subtitle">macOS CPU Core Governor</span>
                 </div>
               </div>
 
@@ -199,13 +199,13 @@ export default function Home() {
                 >
                   <div
                     className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #1a3a38 0%, #3dbdb6 100%)' }}
+                    style={{ background: 'linear-gradient(135deg, #c5eeec 0%, #3dbdb6 100%)' }}
                   >
                     <img className="project-card-thumbnail" src="/images/project-thumbnails/sagewall.png" alt="SageWall" draggable={false} />
                   </div>
                 </a>
                 <div className="project-card-text">
-                  {/* <span className="project-card-category">AWS · Python · Machine Learning</span> */}
+                  <span className="project-card-category">AWS · Python · Machine Learning</span>
                   <a
                     href="https://github.com/awzheng/SageWall"
                     target="_blank"
@@ -226,13 +226,13 @@ export default function Home() {
                 >
                   <div
                     className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #4f1a2f 0%, #c9953e 100%)' }}
+                    style={{ background: 'linear-gradient(135deg, #f5e4c5 0%, #c9953e 100%)' }}
                   >
                     <img className="project-card-thumbnail" src="/images/project-thumbnails/crawlstars.png" alt="CrawlStars" draggable={false} />
                   </div>
                 </a>
                 <div className="project-card-text">
-                  {/* <span className="project-card-category">Golang · MongoDB · Rest API</span> */}
+                  <span className="project-card-category">Golang · MongoDB · Rest API</span>
                   <a
                     href="https://github.com/awzheng/CrawlStars"
                     target="_blank"
@@ -253,13 +253,13 @@ export default function Home() {
                 >
                   <div
                     className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #2d1b4e 0%, #c44dce 100%)' }}
+                    style={{ background: 'linear-gradient(135deg, #f0d0f5 0%, #c44dce 100%)' }}
                   >
                     <img className="project-card-thumbnail" src="/images/project-thumbnails/autotoon.png" alt="Autotoon" draggable={false} />
                   </div>
                 </a>
                 <div className="project-card-text">
-                  {/* <span className="project-card-category">Generative AI</span> */}
+                  <span className="project-card-category">Generative AI</span>
                   <a
                     href="https://github.com/awzheng/Autotoon"
                     target="_blank"
@@ -280,13 +280,13 @@ export default function Home() {
                 >
                   <div
                     className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #3b1200 0%, #e05c1a 100%)' }}
+                    style={{ background: 'linear-gradient(135deg, #fad7c5 0%, #e05c1a 100%)' }}
                   >
                     <img className="project-card-thumbnail" src="/images/project-thumbnails/rocketry-pcb.png" alt="Remote Arming PCB" draggable={false} />
                   </div>
                 </a>
                 <div className="project-card-text">
-                  {/* <span className="project-card-category">Hardware · Embedded</span> */}
+                  <span className="project-card-category">Embedded</span>
                   <a
                     href="https://github.com/waterloo-rocketry/canhw/tree/ra_respin_2025"
                     target="_blank"
@@ -307,13 +307,13 @@ export default function Home() {
                 >
                   <div
                     className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #0d2b1b 0%, #28a36e 100%)' }}
+                    style={{ background: 'linear-gradient(135deg, #c0e8d7 0%, #28a36e 100%)' }}
                   >
                     <img className="project-card-thumbnail" src="/images/project-thumbnails/bionic-arm-pcb.jpg" alt="EMG Fabric Bionic Arm PCB" draggable={false} />
                   </div>
                 </a>
                 <div className="project-card-text">
-                  {/* <span className="project-card-category">Hardware · PCB</span> */}
+                  <span className="project-card-category">Embedded</span>
                   <a
                     href="https://github.com/awzheng/emg-fabric"
                     target="_blank"

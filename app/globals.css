@@ -332,18 +332,13 @@ a.sidebar-item:hover {
 /* ── Project cards (App Store editorial style) ───── */
 
 .project-card {
-  background: #FFFFFF;
-  border-radius: 16px;
-  border: 1px solid #E5E5EA;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transition: transform 0.2s ease;
 }
 
 .project-card:hover {
   transform: scale(1.02);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.09);
 }
 
 /* Clickable image area — suppresses global a:hover opacity so we
@@ -357,19 +352,21 @@ a.sidebar-item:hover {
   opacity: 1;
 }
 
-.project-card-image-link:hover .project-card-image {
-  filter: brightness(0.82);
-}
-
 .project-card-image {
   width: 100%;
   aspect-ratio: 16 / 9;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: filter 0.18s ease;
   position: relative;
   overflow: hidden;
+  border-radius: 16px;
+  box-shadow: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.project-card:hover .project-card-image {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .project-card-thumbnail {
@@ -387,22 +384,24 @@ a.sidebar-item:hover {
 }
 
 .project-card-text {
-  padding: 0.875rem 1rem 1rem;
+  padding: 0.75rem 0 0;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  margin-left: 0.25rem;
 }
 
 .project-card-category {
   font-size: 0.625rem;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.09em;
   color: #86868B;
+  margin-bottom: -0.125rem;
 }
 
 .project-card-title {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 600;
   color: #1D1D1F;
   text-decoration: none;
@@ -418,6 +417,7 @@ a.sidebar-item:hover {
   font-size: 0.8125rem;
   color: #86868B;
   line-height: 1.4;
+  margin-bottom: 1rem;
 }
 
 /* ── Typewriter ──────────────────────────────────── */
@@ -576,11 +576,6 @@ html[data-theme="dark"] .sidebar-golden-ratio {
 
 html[data-theme="dark"] .golden-ratio-caption {
   color: #636366;
-}
-
-html[data-theme="dark"] .project-card {
-  background-color: #1C1C1E;
-  border-color: #38383A;
 }
 
 html[data-theme="dark"] .project-card-title {
