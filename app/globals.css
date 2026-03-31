@@ -512,17 +512,17 @@ code {
 
 html[data-theme="dark"],
 html[data-theme="dark"] body {
-  background-color: #000000;
+  background-color: #1C1C1E;
   color: #F5F5F7;
 }
 
 html[data-theme="dark"] .left-col {
-  background-color: #1C1C1E;
-  border-right-color: #38383A;
+  background-color: #2C2C2E;
+  border-right-color: #3A3A3C;
 }
 
 html[data-theme="dark"] .right-col {
-  background-color: #000000;
+  background-color: #1C1C1E;
 }
 
 html[data-theme="dark"] .projects-header {
@@ -530,12 +530,12 @@ html[data-theme="dark"] .projects-header {
 }
 
 html[data-theme="dark"] .projects-header::before {
-  background-color: rgba(0, 0, 0, 0.92); /* Chrome fallback */
+  background-color: rgba(28, 28, 30, 0.92); /* Chrome fallback */
 }
 
 @supports (hanging-punctuation: first) {
   html[data-theme="dark"] .projects-header::before {
-    background-color: rgba(0, 0, 0, 0.65);
+    background-color: rgba(28, 28, 30, 0.65);
     -webkit-backdrop-filter: blur(6px) saturate(180%);
     backdrop-filter: blur(6px) saturate(180%);
   }
@@ -591,9 +591,9 @@ html[data-theme="dark"] .project-card-category {
 }
 
 html[data-theme="dark"] .social-links a {
-  color: #48484A;
+  color: #8E8E93;
 }
 
 html[data-theme="dark"] .footer {
-  color: #48484A;
+  color: #8E8E93;
 }
