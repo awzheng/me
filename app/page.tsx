@@ -101,7 +101,7 @@ export default function Home() {
               <AppIcon src="/images/icons/case.png" alt="Case Contest Coach" />
               <div className="sidebar-text">
                 <span className="sidebar-title">Self-Employed</span>
-                <span className="sidebar-subtitle">Case Contest Coach · $10K revenue</span>
+                <span className="sidebar-subtitle">Case Contest Coach · $10K+ revenue</span>
               </div>
               <Chevron />
             </Link>
