@@ -244,7 +244,7 @@ export default function Home() {
               </div>
 
               {/* Autotoon */}
-              <div className="project-card">
+              {/* <div className="project-card">
                 <a
                   href="https://github.com/awzheng/Autotoon"
                   target="_blank"
@@ -268,7 +268,7 @@ export default function Home() {
                   >Autotoon</a>
                   <span className="project-card-subtitle">PDF Illustrator</span>
                 </div>
-              </div>
+              </div> */}
 
               {/* Remote Arming Board */}
               <div className="project-card">
