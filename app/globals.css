@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", var(--font-inter, "Inter"), Helvetica, Arial, sans-serif;
   color: #1D1D1F;
   line-height: 1.6;
   background-color: #F5F5F7;
@@ -440,7 +440,7 @@ a.sidebar-item:hover {
 /* ── Typewriter Hover ────────────────────────────── */
 
 .hover-text-span {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", var(--font-inter, "Inter"), Helvetica, Arial, sans-serif;
   color: #1D1D1F;
   line-height: 1.6;
 }
