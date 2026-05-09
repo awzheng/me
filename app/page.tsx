@@ -71,7 +71,7 @@ export default function Home() {
               <AppIcon src="/images/icons/miovision.png" alt="Miovision" />
               <div className="sidebar-text">
                 <span className="sidebar-title">Miovision</span>
-                <span className="sidebar-subtitle">Software Engineering · Device Management</span>
+                <span className="sidebar-subtitle">Software Engineering · Device Platform</span>
               </div>
               <Chevron />
             </Link>
