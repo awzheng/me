@@ -98,9 +98,9 @@ export default function Home() {
               rel="noopener noreferrer"
               className="sidebar-item"
             >
-              <AppIcon src="/images/icons/case.png" alt="Independent" />
+              <AppIcon src="/images/icons/case.png" alt="Founder" />
               <div className="sidebar-text">
-                <span className="sidebar-title">Independent</span>
+                <span className="sidebar-title">Founder</span>
                 <span className="sidebar-subtitle">Case Contest Coach · $10K+ revenue</span>
               </div>
               <Chevron />
