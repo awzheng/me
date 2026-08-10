@@ -199,7 +199,7 @@ export default function Home() {
                 >
                   <div
                     className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #C5BBAC 0%, #604939 100%)' }}
+                    style={{ background: 'linear-gradient(135deg, #f5e4c5 0%, #c9953e 100%)' }}
                   >
                     <img className="project-card-thumbnail" src="/images/project-thumbnails/albedo.png" alt="Albedo" draggable={false} />
                   </div>
@@ -253,7 +253,7 @@ export default function Home() {
                 >
                   <div
                     className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #f5e4c5 0%, #c9953e 100%)' }}
+                    style={{ background: 'linear-gradient(135deg, #fad7c5 0%, #e05c1a 100%)' }}
                   >
                     <img className="project-card-thumbnail" src="/images/project-thumbnails/crawlstars.png" alt="CrawlStars" draggable={false} />
                   </div>
@@ -307,7 +307,7 @@ export default function Home() {
                 >
                   <div
                     className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #fad7c5 0%, #e05c1a 100%)' }}
+                    style={{ background: 'linear-gradient(135deg, #cbd0d1 0%, #a5a6a6 100%)' }}
                   >
                     <img className="project-card-thumbnail" src="/images/project-thumbnails/rocketry-pcb.png" alt="Remote Arming PCB" draggable={false} />
                   </div>
