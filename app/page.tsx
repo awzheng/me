@@ -98,9 +98,9 @@ export default function Home() {
               rel="noopener noreferrer"
               className="sidebar-item"
             >
-              <AppIcon src="/images/icons/case.png" alt="Case Contest Coach" />
+              <AppIcon src="/images/icons/case.png" alt="Independent" />
               <div className="sidebar-text">
-                <span className="sidebar-title">Self-Employed</span>
+                <span className="sidebar-title">Independent</span>
                 <span className="sidebar-subtitle">Case Contest Coach · $10K+ revenue</span>
               </div>
               <Chevron />
@@ -178,7 +178,7 @@ export default function Home() {
                   </div>
                 </a>
                 <div className="project-card-text">
-                  <span className="project-card-category">XNU Kernel</span>
+                  <span className="project-card-category">v2026.03</span>
                   <a
                     href="https://allocate.awzheng.me/"
                     target="_blank"
@@ -186,6 +186,33 @@ export default function Home() {
                     className="project-card-title"
                   >Allocate</a>
                   <span className="project-card-subtitle">macOS CPU Governor</span>
+                </div>
+              </div>
+
+              {/* Albedo */}
+              <div className="project-card">
+                <a
+                  href="https://github.com/awzheng/Albedo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-card-image-link"
+                >
+                  <div
+                    className="project-card-image"
+                    style={{ background: 'linear-gradient(135deg, #C5BBAC 0%, #604939 100%)' }}
+                  >
+                    <img className="project-card-thumbnail" src="/images/project-thumbnails/albedo.png" alt="Albedo" draggable={false} />
+                  </div>
+                </a>
+                <div className="project-card-text">
+                  <span className="project-card-category">v2026-alpha.07</span>
+                  <a
+                    href="https://github.com/awzheng/Albedo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card-title"
+                  >Albedo</a>
+                  <span className="project-card-subtitle">macOS Thermal Control Agent</span>
                 </div>
               </div>
 
@@ -205,14 +232,14 @@ export default function Home() {
                   </div>
                 </a>
                 <div className="project-card-text">
-                  <span className="project-card-category">Cloud ⋅ MLOps</span>
+                  {/* <span className="project-card-category">Cloud ⋅ Infra</span> */}
                   <a
                     href="https://github.com/awzheng/SageWall"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-card-title"
                   >SageWall</a>
-                  <span className="project-card-subtitle">Event-Driven IDS</span>
+                  <span className="project-card-subtitle">Cloud Infrastructure IDS</span>
                 </div>
               </div>
 
@@ -232,7 +259,7 @@ export default function Home() {
                   </div>
                 </a>
                 <div className="project-card-text">
-                  <span className="project-card-category">Concurrency</span>
+                  {/* <span className="project-card-category">Concurrency</span> */}
                   <a
                     href="https://github.com/awzheng/CrawlStars"
                     target="_blank"
@@ -286,14 +313,14 @@ export default function Home() {
                   </div>
                 </a>
                 <div className="project-card-text">
-                  <span className="project-card-category">Embedded</span>
+                  {/* <span className="project-card-category">Embedded</span> */}
                   <a
                     href="https://github.com/waterloo-rocketry/canhw/tree/ra_respin_2025"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-card-title"
                   >Remote Arming PCB</a>
-                  <span className="project-card-subtitle">Waterloo Rocketry</span>
+                  <span className="project-card-subtitle">UWaterloo Rocketry</span>
                 </div>
               </div>
 
@@ -313,14 +340,14 @@ export default function Home() {
                   </div>
                 </a>
                 <div className="project-card-text">
-                  <span className="project-card-category">Embedded</span>
+                  {/* <span className="project-card-category">Embedded</span> */}
                   <a
                     href="https://github.com/awzheng/emg-fabric"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-card-title"
                   >Bionic Arm PCB</a>
-                  <span className="project-card-subtitle">UW Biotron</span>
+                  <span className="project-card-subtitle">UWaterloo Biotron</span>
                 </div>
               </div>
 
