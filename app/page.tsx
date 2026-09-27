@@ -216,30 +216,30 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* SageWall */}
+              {/* GitIRL Bot */}
               <div className="project-card">
                 <a
-                  href="https://github.com/awzheng/SageWall"
+                  href="https://devpost.com/software/house-bot"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="project-card-image-link"
                 >
                   <div
                     className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #c5eeec 0%, #3dbdb6 100%)' }}
+                    style={{ background: 'linear-gradient(135deg, #d9f6f8 0%, #8edee5 100%)' }}
                   >
-                    <img className="project-card-thumbnail" src="/images/project-thumbnails/sagewall.png" alt="SageWall" draggable={false} />
+                    <img className="project-card-thumbnail" src="/images/project-thumbnails/gitirlbot.jpeg" alt="GitIRL Bot" draggable={false} />
                   </div>
                 </a>
                 <div className="project-card-text">
                   {/* <span className="project-card-category">Cloud ⋅ Infra</span> */}
                   <a
-                    href="https://github.com/awzheng/SageWall"
+                    href="https://devpost.com/software/house-bot"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-card-title"
-                  >SageWall</a>
-                  <span className="project-card-subtitle">Cloud Infrastructure IDS</span>
+                  >GitIRL Bot</a>
+                  <span className="project-card-subtitle">Hack the North 2026 Winner</span>
                 </div>
               </div>
 
@@ -270,6 +270,33 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* SageWall */}
+              <div className="project-card">
+                <a
+                  href="https://github.com/awzheng/SageWall"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-card-image-link"
+                >
+                  <div
+                    className="project-card-image"
+                    style={{ background: 'linear-gradient(135deg, #c5eeec 0%, #3dbdb6 100%)' }}
+                  >
+                    <img className="project-card-thumbnail" src="/images/project-thumbnails/sagewall.png" alt="SageWall" draggable={false} />
+                  </div>
+                </a>
+                <div className="project-card-text">
+                  {/* <span className="project-card-category">Cloud ⋅ Infra</span> */}
+                  <a
+                    href="https://github.com/awzheng/SageWall"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card-title"
+                  >SageWall</a>
+                  <span className="project-card-subtitle">Cloud Infrastructure IDS</span>
+                </div>
+              </div>
+              
               {/* Autotoon */}
               {/* <div className="project-card">
                 <a

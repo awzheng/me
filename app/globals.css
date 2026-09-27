@@ -465,38 +465,13 @@ code {
   padding: 0.875rem 2rem;
   border-bottom: 1px solid rgba(229, 229, 234, 0.6);
 
-  /* CRITICAL: The parent must be transparent so the ::before layer shows through */
-  background-color: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-
-  /* Keep the border transition on the parent */
-  transition: border-color 0.3s ease;
-}
-
-/* Glass layer: absolute pseudo-element keeps content stacking clean */
-.projects-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  transition: background-color 0.3s ease;
-
-  /* Chrome fallback: solid near-opaque — backdrop-filter on position:sticky
-     inside overflow-y:auto containers is broken in Chrome's GPU compositor
-     (Chromium issue #820903). Safari composites correctly so gets the blur
-     via the @supports block below. */
-  background-color: rgba(255, 255, 255, 0.92);
-}
-
-/* Safari-only blur — `hanging-punctuation` is a CSS property exclusively
-   implemented by Safari; Chrome never has, making it a reliable feature gate. */
-@supports (hanging-punctuation: first) {
-  .projects-header::before {
-    background-color: rgba(255, 255, 255, 0.65);
-    -webkit-backdrop-filter: blur(6px) saturate(180%);
-    backdrop-filter: blur(6px) saturate(180%);
-  }
+  /* Keep the header translucent so the content beneath it remains visible
+     and blurred in both Chrome and Safari. */
+  background-color: rgba(255, 255, 255, 0.68);
+  -webkit-backdrop-filter: blur(8px) saturate(180%);
+  backdrop-filter: blur(8px) saturate(180%);
+  isolation: isolate;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .projects-header-title {
@@ -526,19 +501,8 @@ html[data-theme="dark"] .right-col {
 }
 
 html[data-theme="dark"] .projects-header {
+  background-color: rgba(28, 28, 30, 0.68);
   border-bottom-color: rgba(56, 56, 58, 0.6);
-}
-
-html[data-theme="dark"] .projects-header::before {
-  background-color: rgba(28, 28, 30, 0.92); /* Chrome fallback */
-}
-
-@supports (hanging-punctuation: first) {
-  html[data-theme="dark"] .projects-header::before {
-    background-color: rgba(28, 28, 30, 0.65);
-    -webkit-backdrop-filter: blur(6px) saturate(180%);
-    backdrop-filter: blur(6px) saturate(180%);
-  }
 }
 
 html[data-theme="dark"] .projects-header-title {
