@@ -70,7 +70,7 @@ a:focus-visible { outline: 1px solid var(--fg); outline-offset: 3px; }
   font-size: 2rem;
   line-height: 1.1;
 }
-.socials { display: flex; gap: 1.25rem; margin-top: 0.5rem; font-size: 0.875rem; }
+.socials { display: flex; gap: 1.25rem; margin-top: 0.5rem; }
 .theme-toggle { background: none; border: 0; padding: 0; cursor: pointer; line-height: 0; }
 .theme-toggle:hover { opacity: 0.6; }
 .theme-toggle:focus-visible { outline: 1px solid var(--fg); outline-offset: 3px; }
@@ -82,7 +82,7 @@ a:focus-visible { outline: 1px solid var(--fg); outline-offset: 3px; }
 }
 :root[data-theme="dark"] .icon-light { display: none !important; }
 :root[data-theme="dark"] .icon-dark { display: block !important; }
-.sub { margin-top: 0.5rem; color: var(--muted); }
+.edu { margin-top: 0.5rem; }
 
 /* Sections */
 section {

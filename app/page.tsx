@@ -38,7 +38,12 @@ export default function Home() {
             </a>
           ))}
         </nav>
-        <p className="sub">University of Waterloo · Computer Engineering</p>
+        <div className="row edu">
+          <a className="title" href="https://uwaterloo.ca/electrical-computer-engineering/" target="_blank" rel="noopener noreferrer">
+            University of Waterloo
+          </a>
+          <span className="meta">Computer Engineering</span>
+        </div>
       </header>
 
       <section>
