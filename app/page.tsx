@@ -50,7 +50,7 @@ export default function Home() {
       </section>
 
       <section>
-        <h2>Featured</h2>
+        <h2>Archive</h2>
         {projects.map((p) => (
           <div className="row" key={p.title}>
             <a className="title" href={p.href} target="_blank" rel="noopener noreferrer">
@@ -61,7 +61,7 @@ export default function Home() {
       </section>
 
       {/* <section>
-          <h2>Stories</h2>
+          <h2>Events</h2>
           <ul className="vlogs">
             {vlogs.map((v) => (
               <li className="vlog" key={v.href}>
