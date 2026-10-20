@@ -84,6 +84,8 @@ h2 {
   gap: 0.25rem 1.5rem;
   padding: 0.1875rem 0;
 }
+.row.work { grid-template-columns: 1.25rem 1fr auto; column-gap: 0.5rem; }
+.row .num { color: var(--muted); }
 .row .title { font-weight: 700; }
 .row .meta { color: var(--muted); text-align: right; }
 
@@ -115,4 +117,10 @@ h2 {
 
 @media (prefers-reduced-motion: reduce) {
   img { transition: none !important; }
+}
+
+/* Desktop: numerals hang in the left margin so titles align with the other sections */
+@media (min-width: 721px) {
+  .row.work { position: relative; grid-template-columns: 1fr auto; column-gap: 1.5rem; }
+  .row.work .num { position: absolute; top: 0.1875rem; right: 100%; margin-right: 1rem; text-align: right; }
 }

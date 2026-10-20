@@ -6,11 +6,13 @@ const socials = [
   { label: "Email", href: "mailto:andrew.zheng1@uwaterloo.ca" },
 ];
 
+const numerals = ["Ø", "I", "II", "III", "IV", "V", "VI"];
+
 const work = [
-  { title: "Harbinger", role: "Los Angeles, USA", href: "https://harbingermotors.com/" },
-  { title: "Miovision", role: "Waterloo, Canada", href: "https://miovision.com/" },
-  { title: "Waterloo Rocketry", role: "Waterloo, Canada", href: "https://www.waterloorocketry.com/" },
-  // { title: "Founder", role: "Toronto, Canada · 2024", href: "https://www.decadirect.org/articles/congratulations-to-the-2024-deca-icdc-competitive-event-champions" },
+  { title: "Harbinger", location: "Los Angeles, USA", href: "https://harbingermotors.com/" },
+  { title: "Miovision", location: "Waterloo, Canada", href: "https://miovision.com/" },
+  { title: "Waterloo Rocketry", location: "Waterloo, Canada", href: "https://www.waterloorocketry.com/" },
+  // { title: "Founder", location: "Toronto, Canada · 2024", href: "https://www.decadirect.org/articles/congratulations-to-the-2024-deca-icdc-competitive-event-champions" },
 ];
 
 const projects = [
@@ -38,13 +40,14 @@ export default function Home() {
       </header>
 
       <section>
-        <h2>Work</h2>
-        {work.map((w) => (
-          <div className="row" key={w.title}>
+        <h2>Experience</h2>
+        {work.map((w, i) => (
+          <div className="row work" key={w.title}>
+            <span className="num" aria-hidden="true">{numerals[work.length - 1 - i]}</span>
             <a className="title" href={w.href} target="_blank" rel="noopener noreferrer">
               {w.title}
             </a>
-            <span className="meta">{w.role}</span>
+            <span className="meta">{w.location}</span>
           </div>
         ))}
       </section>
