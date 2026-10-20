@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Andrew Zheng",
-  description: "Computer Engineering at the University of Waterloo. Work, projects, and vlogs.",
+  description: "Andrew Zheng studies Computer Engineering at the University of Waterloo and builds software at the intersection of hardware, vehicles, and connected systems.",
 };
 
 export const viewport = {
