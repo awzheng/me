@@ -1,406 +1,79 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
-import SocialLinks from "./components/SocialLinks";
-import GoldenRatioImage from "./components/GoldenRatioImage";
 
-const Chevron = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="sidebar-chevron"
-  >
-    <path d="m9 18 6-6-6-6" />
-  </svg>
-);
+const socials = [
+  { label: "LinkedIn", href: "https://linkedin.com/in/andrewzheng2007" },
+  { label: "GitHub", href: "https://github.com/awzheng" },
+  { label: "Email", href: "mailto:andrew.zheng1@uwaterloo.ca" },
+];
 
-const AppIcon = ({ src, alt }: { src: string; alt: string }) => (
-  <div className="sidebar-icon">
-    <img src={src} alt={alt} draggable={false} />
-  </div>
-);
+const work = [
+  { title: "Harbinger", role: "Los Angeles, USA", href: "https://harbingermotors.com/" },
+  { title: "Miovision", role: "Waterloo, Canada", href: "https://miovision.com/" },
+  { title: "Waterloo Rocketry", role: "Waterloo, Canada", href: "https://www.waterloorocketry.com/" },
+  // { title: "Founder", role: "Toronto, Canada · 2024", href: "https://www.decadirect.org/articles/congratulations-to-the-2024-deca-icdc-competitive-event-champions" },
+];
+
+const projects = [
+  { title: "Allocate", href: "https://allocate.awzheng.me/" },
+  { title: "Albedo", href: "https://github.com/awzheng/Albedo" },
+];
+// Fill in: thumbnail (public/images/vlogs/*), title, date, url.
+const vlogs: { title: string; date: string; href: string; image: string }[] = [];
 
 export default function Home() {
   return (
-    <main>
-      <div className="page-grid">
-
-        {/* ── Left Column: Sticky Sidebar ──────────────────── */}
-        <div className="left-col">
-          <header className="header">
-            <h1>Andrew Zheng</h1>
-            <SocialLinks />
-          </header>
-
-          {/* Education */}
-          <section className="section" id="education">
-
-            {/* University of Waterloo */}
-            <Link
-              href="https://uwaterloo.ca/electrical-computer-engineering/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sidebar-item"
-            >
-              <AppIcon src="/images/icons/waterloo-logo.jpg" alt="University of Waterloo" />
-              <div className="sidebar-text">
-                <span className="sidebar-title">University of Waterloo</span>
-                <span className="sidebar-subtitle">Computer Engineering</span>
-              </div>
-              <Chevron />
-            </Link>
-          </section>
-
-          {/* Experience */}
-          <section className="section" id="about">
-            <h2>Experience</h2>
-
-            {/* Miovision*/}
-            <Link
-              href="https://miovision.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sidebar-item"
-            >
-              <AppIcon src="/images/icons/miovision.png" alt="Miovision" />
-              <div className="sidebar-text">
-                <span className="sidebar-title">Miovision</span>
-                <span className="sidebar-subtitle">Software Engineering · Device Platform</span>
-              </div>
-              <Chevron />
-            </Link>
-
-            {/* Rocketry*/}
-            <Link
-              href="https://www.waterloorocketry.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sidebar-item"
-            >
-              <AppIcon src="/images/icons/rocketry.png" alt="Waterloo Rocketry" />
-              <div className="sidebar-text">
-                <span className="sidebar-title">Waterloo Rocketry</span>
-                <span className="sidebar-subtitle">Embedded Systems Developer</span>
-              </div>
-              <Chevron />
-            </Link>
-
-            {/* Case Contest Coach */}
-            <Link
-              href="https://www.decadirect.org/articles/congratulations-to-the-2024-deca-icdc-competitive-event-champions"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sidebar-item"
-            >
-              <AppIcon src="/images/icons/case.png" alt="Founder" />
-              <div className="sidebar-text">
-                <span className="sidebar-title">Founder</span>
-                <span className="sidebar-subtitle">Case Contest Coach · $10K+ revenue</span>
-              </div>
-              <Chevron />
-            </Link>
-
-            {/* DECA ICDC 2024 */}
-            {/* <Link
-              href="https://www.decadirect.org/articles/congratulations-to-the-2024-deca-icdc-competitive-event-champions"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sidebar-item"
-            >
-              <AppIcon src="/images/icons/deca.png" alt="DECA ICDC 2024" />
-              <div className="sidebar-text">
-                <span className="sidebar-title">DECA ICDC 2024</span>
-                <span className="sidebar-subtitle">1st Place Glass · BTDM</span>
-              </div>
-              <Chevron />
-            </Link> */}
-          </section>
-
-
-
-          <footer className="footer">
-            {/* Golden Ratio decorative image */}
-            <GoldenRatioImage />
-            Designed by Andrew Zheng in Markham<br />Made in Waterloo
-          </footer>
+    <main className="wrap">
+      <header>
+        <div className="head">
+          <h1 className="name">Andrew Zheng</h1>
+          <nav className="socials" aria-label="Social links">
+            {socials.map((s) => (
+              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer">
+                {s.label}
+              </a>
+            ))}
+          </nav>
         </div>
+        <p className="sub">University of Waterloo · Computer Engineering</p>
+      </header>
 
-        {/* ── Right Column: Scrollable Main Content ────────── */}
-        <div className="right-col" id="projects">
-
-          {/* Sticky Discover Header */}
-          <header className="projects-header">
-            <span className="projects-header-title">Projects</span>
-          </header>
-
-          {/* Hero Banner — inset to card width (2rem each side), pulled up
-               so Discover header overlays the top edge via negative margin. */}
-          <div style={{ padding: '0 2rem', marginTop: '-3rem' }}>
-            <img
-              src="/images/blindsighted.jpeg"
-              alt="Blindsighted"
-              draggable={false}
-              style={{
-                display: 'block',
-                width: '100%',
-                aspectRatio: '21 / 9',
-                objectFit: 'cover',
-                objectPosition: 'top',
-                borderRadius: '0.75rem',
-              }}
-            />
+      <section>
+        <h2>Work</h2>
+        {work.map((w) => (
+          <div className="row" key={w.title}>
+            <a className="title" href={w.href} target="_blank" rel="noopener noreferrer">
+              {w.title}
+            </a>
+            <span className="meta">{w.role}</span>
           </div>
+        ))}
+      </section>
 
-          {/* Projects Grid */}
-          <div style={{ padding: '1.5rem 2rem 2.5rem' }}>
-            {/* <h3 style={{ marginBottom: '1rem' }}>Projects</h3> */}
-            <div className="project-grid">
-
-              {/* Allocate */}
-              <div className="project-card">
-                <a
-                  href="https://allocate.awzheng.me/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-card-image-link"
-                >
-                  <div
-                    className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #cce6ff 0%, #0096ff 100%)' }}
-                  >
-                    <img className="project-card-thumbnail" src="/images/project-thumbnails/allocate.png" alt="Allocate" draggable={false} />
-                  </div>
-                </a>
-                <div className="project-card-text">
-                  <span className="project-card-category">v2026.03</span>
-                  <a
-                    href="https://allocate.awzheng.me/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-card-title"
-                  >Allocate</a>
-                  <span className="project-card-subtitle">macOS CPU Governor</span>
-                </div>
-              </div>
-
-              {/* Albedo */}
-              <div className="project-card">
-                <a
-                  href="https://github.com/awzheng/Albedo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-card-image-link"
-                >
-                  <div
-                    className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #f5e4c5 0%, #c9953e 100%)' }}
-                  >
-                    <img className="project-card-thumbnail" src="/images/project-thumbnails/albedo.png" alt="Albedo" draggable={false} />
-                  </div>
-                </a>
-                <div className="project-card-text">
-                  <span className="project-card-category">v2026-alpha.07</span>
-                  <a
-                    href="https://github.com/awzheng/Albedo"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-card-title"
-                  >Albedo</a>
-                  <span className="project-card-subtitle">macOS Thermal Control Agent</span>
-                </div>
-              </div>
-
-              {/* GitIRL Bot */}
-              <div className="project-card">
-                <a
-                  href="https://devpost.com/software/house-bot"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-card-image-link"
-                >
-                  <div
-                    className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #d9f6f8 0%, #8edee5 100%)' }}
-                  >
-                    <img className="project-card-thumbnail" src="/images/project-thumbnails/gitirlbot.jpeg" alt="GitIRL Bot" draggable={false} />
-                  </div>
-                </a>
-                <div className="project-card-text">
-                  {/* <span className="project-card-category">Cloud ⋅ Infra</span> */}
-                  <a
-                    href="https://devpost.com/software/house-bot"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-card-title"
-                  >GitIRL Bot</a>
-                  <span className="project-card-subtitle">Hack the North 2026 Winner</span>
-                </div>
-              </div>
-
-              {/* CrawlStars */}
-              <div className="project-card">
-                <a
-                  href="https://github.com/awzheng/CrawlStars"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-card-image-link"
-                >
-                  <div
-                    className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #fad7c5 0%, #e05c1a 100%)' }}
-                  >
-                    <img className="project-card-thumbnail" src="/images/project-thumbnails/crawlstars.png" alt="CrawlStars" draggable={false} />
-                  </div>
-                </a>
-                <div className="project-card-text">
-                  {/* <span className="project-card-category">Concurrency</span> */}
-                  <a
-                    href="https://github.com/awzheng/CrawlStars"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-card-title"
-                  >CrawlStars</a>
-                  <span className="project-card-subtitle">Distributed Search Engine</span>
-                </div>
-              </div>
-
-              {/* SageWall */}
-              <div className="project-card">
-                <a
-                  href="https://github.com/awzheng/SageWall"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-card-image-link"
-                >
-                  <div
-                    className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #c5eeec 0%, #3dbdb6 100%)' }}
-                  >
-                    <img className="project-card-thumbnail" src="/images/project-thumbnails/sagewall.png" alt="SageWall" draggable={false} />
-                  </div>
-                </a>
-                <div className="project-card-text">
-                  {/* <span className="project-card-category">Cloud ⋅ Infra</span> */}
-                  <a
-                    href="https://github.com/awzheng/SageWall"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-card-title"
-                  >SageWall</a>
-                  <span className="project-card-subtitle">Cloud Infrastructure IDS</span>
-                </div>
-              </div>
-              
-              {/* Autotoon */}
-              {/* <div className="project-card">
-                <a
-                  href="https://github.com/awzheng/Autotoon"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-card-image-link"
-                >
-                  <div
-                    className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #f0d0f5 0%, #c44dce 100%)' }}
-                  >
-                    <img className="project-card-thumbnail" src="/images/project-thumbnails/autotoon.png" alt="Autotoon" draggable={false} />
-                  </div>
-                </a>
-                <div className="project-card-text">
-                  <span className="project-card-category">Applied AI</span>
-                  <a
-                    href="https://github.com/awzheng/Autotoon"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-card-title"
-                  >Autotoon</a>
-                  <span className="project-card-subtitle">PDF Illustrator</span>
-                </div>
-              </div> */}
-
-              {/* Remote Arming Board */}
-              <div className="project-card">
-                <a
-                  href="https://github.com/waterloo-rocketry/canhw/tree/ra_respin_2025"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-card-image-link"
-                >
-                  <div
-                    className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #cbd0d1 0%, #a5a6a6 100%)' }}
-                  >
-                    <img className="project-card-thumbnail" src="/images/project-thumbnails/rocketry-pcb.png" alt="Remote Arming PCB" draggable={false} />
-                  </div>
-                </a>
-                <div className="project-card-text">
-                  {/* <span className="project-card-category">Embedded</span> */}
-                  <a
-                    href="https://github.com/waterloo-rocketry/canhw/tree/ra_respin_2025"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-card-title"
-                  >Remote Arming PCB</a>
-                  <span className="project-card-subtitle">UWaterloo Rocketry</span>
-                </div>
-              </div>
-
-              {/* EMG Fabric Bionic Arm */}
-              <div className="project-card">
-                <a
-                  href="https://github.com/awzheng/emg-fabric"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-card-image-link"
-                >
-                  <div
-                    className="project-card-image"
-                    style={{ background: 'linear-gradient(135deg, #c0e8d7 0%, #28a36e 100%)' }}
-                  >
-                    <img className="project-card-thumbnail" src="/images/project-thumbnails/bionic-arm-pcb.jpg" alt="EMG Fabric Bionic Arm PCB" draggable={false} />
-                  </div>
-                </a>
-                <div className="project-card-text">
-                  {/* <span className="project-card-category">Embedded</span> */}
-                  <a
-                    href="https://github.com/awzheng/emg-fabric"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-card-title"
-                  >Bionic Arm PCB</a>
-                  <span className="project-card-subtitle">UWaterloo Biotron</span>
-                </div>
-              </div>
-
-              {/* Portfolio */}
-              {/* <div className="project-card">
-                <div className="project-card-image" style={{ background: 'linear-gradient(135deg, #1a1a2e 0%, #6c63ff 100%)' }}>
-                  <span style={{ fontSize: '2.25rem' }}>📚</span>
-                </div>
-                <div className="project-card-text">
-                  <span className="project-card-category">Design</span>
-                  <a
-                    href="https://docs.google.com/presentation/d/1IPV0oED7ZA_3K-oapaJplcr2cA3jqUmWFoVdGyBQ99s/edit?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-card-title"
-                  >Portfolio</a>
-                  <span className="project-card-subtitle">Design & project portfolio</span>
-                </div>
-              </div> */}
-
-            </div>
+      <section>
+        <h2>Featured</h2>
+        {projects.map((p) => (
+          <div className="row" key={p.title}>
+            <a className="title" href={p.href} target="_blank" rel="noopener noreferrer">
+              {p.title}
+            </a>
           </div>
+        ))}
+      </section>
 
-        </div>
-
-      </div>
+      {/* <section>
+          <h2>Stories</h2>
+          <ul className="vlogs">
+            {vlogs.map((v) => (
+              <li className="vlog" key={v.href}>
+                <a href={v.href} target="_blank" rel="noopener noreferrer">
+                  <img src={v.image} alt="" loading="lazy" decoding="async" />
+                  <span className="t">{v.title}</span>
+                  <span className="d">{v.date}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section> */}
     </main>
   );
 }

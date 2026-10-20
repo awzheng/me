@@ -1,31 +1,26 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "Andrew Zheng",
-  description: "Personal portfolio and projects",
-  icons: {
-    icon: '/icon.svg',
-  },
+  description: "Computer Engineering at the University of Waterloo. Work, projects, and vlogs.",
+  icons: { icon: "/icon.svg" },
 };
 
 export const viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
-  viewportFit: 'cover' as const,
-  themeColor: '#F5F5F7',
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ece0d1" },
+    { media: "(prefers-color-scheme: dark)", color: "#38220f" },
+  ],
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en">
       <body>{children}</body>
     </html>
   );
