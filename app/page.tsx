@@ -17,7 +17,7 @@ const work = [
 ];
 
 const projects = [
-  { title: "GitIRL Bot", description: "Winner, Hack the North 2026", href: "https://devpost.com/software/house-bot" },
+  { title: "Git IRL Bot", description: "Winner, Hack the North 2026", href: "https://devpost.com/software/house-bot" },
   { title: "Allocate", description: "macOS CPU Fleet Controller", href: "https://allocate.awzheng.me/" },
 ];
 // Fill in: thumbnail (public/images/vlogs/*), title, date, url.
