@@ -1,7 +1,17 @@
 "use client";
 
+import { useEffect } from "react";
+
 /* eslint-disable @next/next/no-img-element */
 export default function ThemeToggle() {
+  // A system theme change takes over again, clearing any manual override.
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const sync = () => delete document.documentElement.dataset.theme;
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
   const toggle = () => {
     const root = document.documentElement;
     const current =
