@@ -4,7 +4,6 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Andrew Zheng",
   description: "Computer Engineering at the University of Waterloo. Work, projects, and vlogs.",
-  icons: { icon: "/icon.svg" },
 };
 
 export const viewport = {
