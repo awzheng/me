@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import ThemeToggle from "./components/ThemeToggle";
 
 const socials = [
   { label: "LinkedIn", href: "https://linkedin.com/in/andrewzheng2007" },
@@ -28,14 +29,15 @@ export default function Home() {
       <header>
         <div className="head">
           <h1 className="name">Andrew Zheng</h1>
-          <nav className="socials" aria-label="Social links">
-            {socials.map((s) => (
-              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer">
-                {s.label}
-              </a>
-            ))}
-          </nav>
+          <ThemeToggle />
         </div>
+        <nav className="socials" aria-label="Social links">
+          {socials.map((s) => (
+            <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer">
+              {s.label}
+            </a>
+          ))}
+        </nav>
         <p className="sub">University of Waterloo · Computer Engineering</p>
       </header>
 
