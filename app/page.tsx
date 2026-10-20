@@ -17,8 +17,8 @@ const work = [
 ];
 
 const projects = [
-  { title: "Allocate", href: "https://allocate.awzheng.me/" },
-  { title: "Albedo", href: "https://github.com/awzheng/Albedo" },
+  { title: "GitIRL Bot", description: "Winner, Hack the North 2026", href: "https://devpost.com/software/house-bot" },
+  { title: "Allocate", description: "macOS CPU Fleet Controller", href: "https://allocate.awzheng.me/" },
 ];
 // Fill in: thumbnail (public/images/vlogs/*), title, date, url.
 const vlogs: { title: string; date: string; href: string; image: string }[] = [];
@@ -61,6 +61,7 @@ export default function Home() {
             <a className="title" href={p.href} target="_blank" rel="noopener noreferrer">
               {p.title}
             </a>
+            <span className="meta">{p.description}</span>
           </div>
         ))}
       </section>
