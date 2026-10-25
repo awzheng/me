@@ -89,7 +89,7 @@ a:focus-visible { outline: 1px solid var(--fg); outline-offset: 3px; color: var(
 
 /* Sections */
 section {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 }
 h2 {
   font-family: "Hanyi WenHei", Arial, sans-serif;
@@ -107,6 +107,8 @@ h2 {
   padding: 0.1875rem 0;
 }
 .row.work { grid-template-columns: 1.25rem 1fr auto; column-gap: 0.5rem; }
+/* Gap between the last work row (Rocketry) and the first project (Git IRL Bot) */
+.row.work + .row:not(.work) { margin-top: 0.5rem; }
 .row .num { color: var(--muted); }
 .row .title { font-weight: 700; }
 .row .meta { color: var(--muted); text-align: right; }
