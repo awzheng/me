@@ -2,7 +2,7 @@
   font-family: "Hanyi WenHei";
   src: url("/fonts/hywenhei-85w.woff2") format("woff2");
   font-weight: 400;
-  font-display: swap;
+  font-display: block;
 }
 
 :root {
@@ -30,6 +30,8 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { -webkit-text-size-adjust: 100%; }
+/* Only the charcoal background shows until the heading font is ready (see layout.tsx) */
+html.fonts-loading body { visibility: hidden; }
 
 body {
   background: var(--bg);
