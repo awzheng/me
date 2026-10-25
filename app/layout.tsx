@@ -12,11 +12,17 @@ export const viewport = {
   themeColor: "#2b2826",
 };
 
+// Restores the saved toggle icon before first paint so the page never flashes the default.
+const ICON_SCRIPT = `try{var n=+localStorage.getItem("toggle-icon");document.documentElement.dataset.icon=n>=1&&n<=7?n:1}catch(e){}`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: ICON_SCRIPT }} />
+      </head>
       <body>{children}</body>
     </html>
   );
